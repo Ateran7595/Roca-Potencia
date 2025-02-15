@@ -1,12 +1,14 @@
 import './App.css'
-import { Button } from "@/components/ui/button"
+import Header from './create-page/Header'
+import Hero from './create-page/Hero'
+
 function App() {
 
   return (
-    <>
-     <h1>Hallooo</h1>
-     <Button>IT WORKS!</Button>
-    </>
+    <div>
+      <Header />
+      <Hero />
+    </div>
   )
 }
 
