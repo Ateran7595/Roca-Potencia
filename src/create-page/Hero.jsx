@@ -3,8 +3,6 @@ import Services from "./Services"
 import { FaFacebook } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
 
-
-
 function Hero() {
 
   return (
