@@ -1,14 +1,22 @@
 import { Button } from '@/components/ui/button'
 import Header from './Header'
 import { useEffect, useState } from 'react'
+import { FaInstagram } from "react-icons/fa";
+
 
 function ServiceEP() {
   const [animationKey, setAnimationKey] = useState(0);
 
   useEffect(() => {
     if (window.AOS) {
-      window.AOS.refresh();
-    }
+      // Initialize AOS if not already done
+      AOS.init({
+        duration: 1000, // Set a default duration for animation
+        once: true, // Trigger animation only once when scrolled into view
+        easing: 'ease-in-out', // Define easing function
+      });}
+
+      AOS.refresh();
 
     // Trigger carousel restart on component mount
     setAnimationKey((prev) => prev + 1);
@@ -27,7 +35,7 @@ function ServiceEP() {
         </div>
       </div>
 
-      <div className="mt-[200px] text-xl font-roboto text-center font-semibold animate">
+      <div className="mt-[200px] font-roboto text-center font-semibold ">
         <div className="text-[30px]" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-offset="0">
           <h1 className="text-[40px] font-bold">Roca & Potencia El Paso, TX</h1>
           <div className="border-b-3 w-[40%] m-auto mt-2 mb-2"></div>
@@ -59,8 +67,34 @@ function ServiceEP() {
         </div>
       </div>
       <div className='bg-[linear-gradient(-225deg,_#CBBACC_0%,_#2580B3_100%)] rounded-t-2xl mt-10 text-white p-4'>
-        <h1 className='text-center text-[35px] font-bold outline w-[40%] m-auto font-roboto'>Tambien Se Parte De Nuestro Grupo De Jovenes!</h1>
-        
+        <h1 className='text-center text-[35px] font-bold outline w-[40%] m-auto font-roboto'data-aos="fade-down" >Tambien Se Parte De Nuestro Grupo De Jovenes!</h1>
+        <div>
+          <div className='m-auto flex justify-center mt-10 mb-8' data-aos="fade-down" >
+            <img src="ep6.jpg" alt="ep6" className='rounded-2xl w-[850px]' />
+          </div>
+          <div className="text-[30px] font-bold text-center font-roboto" data-aos-easing="ease-in-back" data-aos-offset="0" data-aos="fade-zoom-in" >
+            <h1 className="text-[40px] ">Roca & Potencia Generacion 316</h1>
+            <div className="border-b-3 w-[40%] m-auto mt-2 mb-2"></div>
+            <p>Todos Los Viernes</p>
+            <p>7:00pm - 9:00pm</p>
+            <a href="https://www.instagram.com/rocapotencia_yth?igsh=c2l2bXUzcTRiODNp" target='_blank' className='flex justify-center mt-5 text-[45px] transition-transform hover:scale-105 hover:opacity-70' ><FaInstagram /></a>
+          </div>
+        </div>
+        <div className='mt-10 mb-8' data-aos="fade-up" >
+          <video
+            src="/videos/jovenes3.mp4"
+            className="m-auto flex justify-center items-center rounded-2xl h-[650px]"
+            controls
+            loop
+          />
+        </div>
+        <div className="text-[30px] font-bold text-center font-roboto" data-aos="fade-down" >
+            <h1 className="text-[40px] ">No Te Pierdas Ninguno De Nuestros Eventos!</h1>
+            <div className="border-b-3 w-[55%] m-auto mt-2 mb-5"></div>
+            <Button className="text-white shadow-2xl text-[30px] font-bold h-[50px] rounded-[100px] border-3 border-white cursor-pointer transition-transform hover:scale-105 hover:opacity-70">
+              Proximos Eventos
+            </Button>
+          </div>
       </div>
 
     </div>

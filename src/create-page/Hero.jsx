@@ -38,8 +38,8 @@ function Hero() {
         <h1 className="text-[30px] font-semibold">Tambien Visitanos</h1>
         <div className="border-b-3 w-[40%] m-auto mt-2 mb-2"></div>
         <div className="flex justify-center gap-10">
-          <a href="https://www.facebook.com/IglesiaRocaYPotencia/?locale=es_LA" target="_blank" className="text-[50px]" ><FaFacebook /></a>
-          <a href="https://www.youtube.com/channel/UCY4c8J0EmHRjKRu8js6L-hA" target="_blank" className="text-[50px]"><FaYoutube /></a>
+          <a href="https://www.facebook.com/IglesiaRocaYPotencia/?locale=es_LA" target="_blank" className="text-[50px] transition-transform hover:scale-105 hover:opacity-40 shadow-2xl" ><FaFacebook /></a>
+          <a href="https://www.youtube.com/channel/UCY4c8J0EmHRjKRu8js6L-hA" target="_blank" className="text-[50px] transition-transform hover:scale-105 hover:opacity-40 shadow-2xl"><FaYoutube /></a>
         </div>
         
       </div>

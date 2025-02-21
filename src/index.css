@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:is(.dark *));
+
 @theme {
   --font-roboto: "Roboto Slab", serif;
 
@@ -35,3 +37,4 @@
 html {
   scroll-behavior: smooth;
 }
+
