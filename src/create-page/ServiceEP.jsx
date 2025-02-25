@@ -22,6 +22,10 @@ function ServiceEP() {
     setAnimationKey((prev) => prev + 1);
   }, []);
 
+  const handleScrollToTop = () => {
+    window.scrollTo({ top: 0 });
+  };
+
   return (
     <div className="bg-gradient-to-t from-[#dfe9f3] to-white ">
       <Header />
@@ -40,10 +44,17 @@ function ServiceEP() {
           <h1 className="text-[40px] font-bold">Roca & Potencia El Paso, TX</h1>
           <div className="border-b-3 w-[40%] m-auto mt-2 mb-2"></div>
           <p>915 Delta Drive, El Paso, Texas</p>
-          <p>11:00am - 1:30pm</p>
+          <p>Domingos: 11:00am - 1:30pm</p>
+          <p>Viernes: 7pm - 9pm</p>
           <a href="https://www.google.com/maps/place/Templo+La+Potenica+De+Dios/@31.7271681,-106.4935073,14z/data=!4m6!3m5!1s0x86e75904d111d355:0x88355d21d23276b9!8m2!3d31.7573792!4d-106.4793629!16s%2Fg%2F11c1sk1w8n?entry=ttu&g_ep=EgoyMDI1MDIxOC4wIKXMDSoJLDEwMjExNDU1SAFQAw%3D%3D" target='_blank'>
             <Button className="text-[22px] mt-3 font-bold h-[50px] rounded-[100px] border-2 border-black cursor-pointer transition-transform hover:scale-105 hover:opacity-40 shadow-2xl" >Mapa</Button>
           </a>
+        </div>
+        <div className="text-[30px] mt-15">
+          <div className="border-2 rounded-xl w-[40%] m-auto mt-2 mb-2">
+            <h1 className="text-[40px] font-bold">Escuela Dominical Todas Edades</h1>
+          </div>
+          <p>Domingos: 9am - 11:00am</p>
         </div>
       </div>
 
@@ -54,19 +65,19 @@ function ServiceEP() {
       {/* Add a unique key to force rerender */}
       <div className="flex gap-1 w-full overflow-hidden" data-aos="zoom-in-down" key={animationKey}>
         <div className="relative flex gap-1 z-0 animate-loop-scroll">
-          <img src="ep1.jpg" alt="city" className="brightness-75 max-w-none object-cover h-[500px] rounded-2xl" />
-          <img src="ep2.jpg" alt="beach" className="brightness-75 max-w-none object-cover h-[500px] rounded-2xl" />
-          <img src="ep3.jpg" alt="countryside" className="brightness-75 max-w-none object-cover h-[500px] rounded-2xl" />
-          <img src="ep5.jpg" alt="mountain" className="brightness-75 max-w-none object-cover h-[500px] rounded-2xl" />
+          <img src="ep1.jpg" alt="RPEP" className="brightness-75 max-w-none object-cover h-[500px] rounded-2xl" />
+          <img src="ep2.jpg" alt="RPEP" className="brightness-75 max-w-none object-cover h-[500px] rounded-2xl" />
+          <img src="ep3.jpg" alt="RPEP" className="brightness-75 max-w-none object-cover h-[500px] rounded-2xl" />
+          <img src="ep5.jpg" alt="RPEP" className="brightness-75 max-w-none object-cover h-[500px] rounded-2xl" />
         </div>
         <div className="relative flex gap-1 z-0 animate-loop-scroll">
-          <img src="ep1.jpg" alt="city" className="brightness-75 max-w-none object-cover h-[500px] rounded-2xl" />
-          <img src="ep2.jpg" alt="beach" className="brightness-75 max-w-none object-cover h-[500px] rounded-2xl" />
-          <img src="ep3.jpg" alt="countryside" className="brightness-75 max-w-none object-cover h-[500px] rounded-2xl" />
-          <img src="ep5.jpg" alt="mountain" className="brightness-75 max-w-none object-cover h-[500px] rounded-2xl" />
+          <img src="ep1.jpg" alt="RPEP" className="brightness-75 max-w-none object-cover h-[500px] rounded-2xl" />
+          <img src="ep2.jpg" alt="RPEP" className="brightness-75 max-w-none object-cover h-[500px] rounded-2xl" />
+          <img src="ep3.jpg" alt="RPEP" className="brightness-75 max-w-none object-cover h-[500px] rounded-2xl" />
+          <img src="ep5.jpg" alt="RPEP" className="brightness-75 max-w-none object-cover h-[500px] rounded-2xl" />
         </div>
       </div>
-      <div className='bg-[linear-gradient(-225deg,_#CBBACC_0%,_#2580B3_100%)] rounded-t-2xl mt-10 text-white p-4'>
+      <div className='bg-[linear-gradient(-225deg,_#CBBACC_0%,_#2580B3_100%)] rounded-t-2xl mt-10 text-white p-4 pt-15'>
         <h1 className='text-center text-[35px] font-bold outline w-[40%] m-auto font-roboto'data-aos="fade-down" >Tambien Se Parte De Nuestro Grupo De Jovenes!</h1>
         <div>
           <div className='m-auto flex justify-center mt-10 mb-8' data-aos="fade-down" >
@@ -89,14 +100,16 @@ function ServiceEP() {
           />
         </div>
         <div className="text-[30px] font-bold text-center font-roboto" data-aos="fade-down" >
-            <h1 className="text-[40px] ">No Te Pierdas Ninguno De Nuestros Eventos!</h1>
-            <div className="border-b-3 w-[55%] m-auto mt-2 mb-5"></div>
-            <Button className="text-white shadow-2xl text-[30px] font-bold h-[50px] rounded-[100px] border-3 border-white cursor-pointer transition-transform hover:scale-105 hover:opacity-70">
-              Proximos Eventos
-            </Button>
-          </div>
+          <h1 className="text-[40px] ">No Te Pierdas Ninguno De Nuestros Eventos!</h1>
+          <div className="border-b-3 w-[55%] m-auto mt-2 mb-5"></div>
+          <Button className="mb-10 text-white shadow-2xl text-[30px] font-bold h-[50px] rounded-[100px] border-3 border-white cursor-pointer transition-transform hover:scale-105 hover:opacity-70">
+            Proximos Eventos
+          </Button>
+        </div>
+        <div>
+          <p onClick={handleScrollToTop} className='text-center text-[40px] cursor-pointer'>🔝</p>
+        </div>
       </div>
-
     </div>
   );
 }

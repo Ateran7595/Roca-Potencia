@@ -4,13 +4,17 @@ import { useLocation } from 'react-router-dom';
 function Header() {
   const location = useLocation(); // Get the current page URL
   const isLandingPage = location.pathname === '/'; // Check if we are on the landing page
-  const isServicePage = location.pathname === '/serviceep';
+  const isServicePageEP = location.pathname === '/serviceep';
+  const isServicePageJZ = location.pathname === '/servicejz'
 
   const headerBackground = isLandingPage
   ? 'bg-[linear-gradient(-20deg,#616161_0%,#9bc5c3_100%)]'
-  : isServicePage
+  : isServicePageEP
   ? 'bg-[linear-gradient(-225deg,#CBBACC_0%,#2580B3_100%)]'
-  : 'bg-gray-800'; 
+  : isServicePageJZ
+  ? "bg-[linear-gradient(-20deg,_#fc6076_0%,_#ff9a44_100%)]"
+  : 'bg-gray-800'
+  
 
   return (
     <div className={`flex justify-between items-center font-roboto ${headerBackground} p-6`}>
