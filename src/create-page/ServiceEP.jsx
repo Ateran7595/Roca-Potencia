@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button'
 import Header from './Header'
 import { useEffect, useState } from 'react'
 import { FaInstagram } from "react-icons/fa";
+import { FaWhatsapp } from "react-icons/fa";
 
 
 function ServiceEP() {
@@ -88,7 +89,10 @@ function ServiceEP() {
             <div className="border-b-3 w-[40%] m-auto mt-2 mb-2"></div>
             <p>Todos Los Viernes</p>
             <p>7:00pm - 9:00pm</p>
-            <a href="https://www.instagram.com/rocapotencia_yth?igsh=c2l2bXUzcTRiODNp" target='_blank' className='flex justify-center mt-5 text-[45px] transition-transform hover:scale-105 hover:opacity-70' ><FaInstagram /></a>
+            <div className='flex justify-center items-center gap-5'>
+              <a href="https://www.instagram.com/rocapotencia_yth?igsh=c2l2bXUzcTRiODNp" target='_blank' className='flex justify-center mt-5 text-[45px] transition-transform hover:scale-105 hover:opacity-70' ><FaInstagram /></a>
+              <a href="https://chat.whatsapp.com/L6GDaOYaCLR8zCUn7NPgPx" target='_blank' className='flex justify-center mt-5 text-[45px] transition-transform hover:scale-105 hover:opacity-70'  ><FaWhatsapp /></a>
+            </div>
           </div>
         </div>
         <div className='mt-10 mb-8' data-aos="fade-up" >

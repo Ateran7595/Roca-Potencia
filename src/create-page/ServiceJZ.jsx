@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button'
 import Header from './Header'
 import { useEffect, useState } from 'react'
 import { FaInstagram } from "react-icons/fa";
+import { FaWhatsapp } from "react-icons/fa";
 
 function ServiceJZ() {
   const [animationKey, setAnimationKey] = useState(0);
@@ -81,11 +82,15 @@ function ServiceJZ() {
             <img src="ep6.jpg" alt="ep6" className='rounded-2xl w-[850px]' />
           </div>
           <div className="text-[30px] font-bold text-center font-roboto" data-aos-easing="ease-in-back" data-aos-offset="0" data-aos="fade-zoom-in" >
-            <h1 className="text-[40px] ">Roca & Potencia YTH</h1>
+            <h1 className="text-[40px] ">Roca & Potencia Youth</h1>
             <div className="border-b-3 w-[40%] m-auto mt-2 mb-2"></div>
-            <p>Todos Los Viernes</p>
-            <p>7:00pm - 9:00pm</p>
-            <a href="https://www.instagram.com/rocapotencia_yth?igsh=c2l2bXUzcTRiODNp" target='_blank' className='flex justify-center mt-5 text-[45px] transition-transform hover:scale-105 hover:opacity-70' ><FaInstagram /></a>
+            <p>Todos Los Lunes Via Zoom</p>
+            <p>8:30pm - 9:30pm</p>
+            <div className='flex justify-center items-center gap-5'>
+              <a href="https://www.instagram.com/rocapotencia_yth?igsh=c2l2bXUzcTRiODNp" target='_blank' className='flex justify-center mt-5 text-[45px] transition-transform hover:scale-105 hover:opacity-70' ><FaInstagram /></a>
+              <a href="https://chat.whatsapp.com/JA89oqduxHmLFg90vGdmbz" target='_blank' className='flex justify-center mt-5 text-[45px] transition-transform hover:scale-105 hover:opacity-70'  ><FaWhatsapp /></a>
+            </div>
+            
           </div>
         </div>
         <div className='mt-10 mb-8' data-aos="fade-up" >

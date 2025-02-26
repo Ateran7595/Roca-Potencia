@@ -48,7 +48,7 @@ function Services() {
             <div className="flex flex-col justify-center p-5 font-semibold text-end">
               <h1 className="text-[45px]">Roca & Potencia Juarez</h1>
               <p className="text-[22px] pr-1.5 outline">
-                E Delta Dr, El Paso, TX 79901
+              Av 5 de Febrero, 32240 Juárez, Chih., Mexico
                 <br />
                 Mas Informacion →
               </p>
