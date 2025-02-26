@@ -30,14 +30,14 @@ function ServiceJZ() {
     <div>
         <Header  />
         <div className="bg-[linear-gradient(-20deg,_#fc6076_0%,_#ff9a44_100%)] flex flex-col items-center justify-center w-full p-5 h-[900px] relative">
-        <div className="relative w-full flex items-center justify-center">
-          <img src="/roca4.jpg" alt="roca5" className="w-[1300px] rounded-[50px] brightness-70 relative top-[150px] object-cover" data-aos="fade-up" />
-          <div className="absolute text-[100px] text-white bottom-[610px] text-center" data-aos="fade-down">
-            <h1 className="font-semibold" data-aos="fade-down">Roca & Potencia Juarez</h1>
-            <p className="text-[36px] font-semibold outline">Todo es posible si puedes creer</p>
+          <div className="relative w-full flex items-center justify-center">
+            <img src="/roca4.jpg" alt="roca5" className="w-[1300px] rounded-[50px] brightness-70 relative top-[150px] object-cover" data-aos="fade-up" />
+            <div className="absolute text-[100px] text-white bottom-[610px] text-center" data-aos="fade-down">
+              <h1 className="font-semibold" data-aos="fade-down">Roca & Potencia Juarez</h1>
+              <p className="text-[36px] font-semibold outline">Todo es posible si puedes creer</p>
+            </div>
           </div>
         </div>
-      </div>
 
       <div className="mt-[200px] font-roboto text-center font-semibold ">
         <div className="text-[30px]" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-offset="0">
@@ -87,22 +87,17 @@ function ServiceJZ() {
             <p>Todos Los Lunes Via Zoom</p>
             <p>8:30pm - 9:30pm</p>
             <div className='flex justify-center items-center gap-5'>
-              <a href="https://www.instagram.com/rocapotencia_yth?igsh=c2l2bXUzcTRiODNp" target='_blank' className='flex justify-center mt-5 text-[45px] transition-transform hover:scale-105 hover:opacity-70' ><FaInstagram /></a>
+              <a href="https://www.instagram.com/proposito_jovenes?igsh=YWJjbzRxajl2eXV2&utm_source=qr" target='_blank' className='flex justify-center mt-5 text-[45px] transition-transform hover:scale-105 hover:opacity-70' ><FaInstagram /></a>
               <a href="https://chat.whatsapp.com/JA89oqduxHmLFg90vGdmbz" target='_blank' className='flex justify-center mt-5 text-[45px] transition-transform hover:scale-105 hover:opacity-70'  ><FaWhatsapp /></a>
             </div>
             
           </div>
         </div>
         <div className='mt-10 mb-8' data-aos="fade-up" >
-          <video
-            src="/videos/jovenes3.mp4"
-            className="m-auto flex justify-center items-center rounded-2xl h-[650px]"
-            controls
-            loop
-          />
+          <img src="/jzLunes.jpg" alt="zoom" className='flex justify-center items-center m-auto rounded-2xl w-[700px]' />
         </div>
         <div className="text-[30px] font-bold text-center font-roboto" data-aos="fade-down" >
-          <h1 className="text-[40px] ">No Te Pierdas Ninguno De Nuestros Eventos!</h1>
+          <h1 className="text-[40px] ">Visita Nuestros Proximos Eventos!</h1>
           <div className="border-b-3 w-[55%] m-auto mt-2 mb-5"></div>
           <Button className="mb-10 text-white shadow-2xl text-[30px] font-bold h-[50px] rounded-[100px] border-3 border-white cursor-pointer transition-transform hover:scale-105 hover:opacity-70">
             Proximos Eventos
