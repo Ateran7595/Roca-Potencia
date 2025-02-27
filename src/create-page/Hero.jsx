@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button"
 import Services from "./Services"
 import { FaFacebook } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 function Hero() {
 
@@ -29,9 +30,12 @@ function Hero() {
           </h2>
           <p className="font-bold">✨ Con Dios, ¡todo es posible! ✨</p>  
         </div>
-        <div className="mt-4 flex justify-center gap-5" data-aos="fade-up">
-          <Button className="text-[22px] font-bold h-[50px] rounded-[100px] border-2 border-black cursor-pointer transition-transform hover:scale-105 hover:opacity-40 shadow-2xl">Proximos eventos</Button>
-        </div>
+        <Link to={'/eventos'}>
+          <div className="mt-4 flex justify-center gap-5" data-aos="fade-up">
+            <Button className="text-[22px] font-bold h-[50px] rounded-[100px] border-2 border-black cursor-pointer transition-transform hover:scale-105 hover:opacity-40 shadow-2xl">Proximos eventos</Button>
+          </div>        
+        </Link>
+
       </div>
       <Services />
       <div className="font-roboto text-center flex flex-col mt-6 pb-6" data-aos="fade-up">

@@ -1,4 +1,7 @@
+import { DatePickerDemo } from "@/components/DatePickerDemo"
 import Header from "./Header"
+import { Input } from "@/components/ui/input"
+// import { Label } from "@/components/label"
 
 function Events() {
   return (
@@ -13,8 +16,17 @@ function Events() {
             </div>
             </div>
         </div>
-        <div>
-            
+        <div className="m-auto flex justify-center items-center mt-[200px]">
+          <div>
+            <h1>Echa Un Vistazo</h1>
+          </div>
+          
+          
+          {/* <form>
+            <label htmlFor="picture">Picture</label>
+            <Input id="picture" type="file" />
+            <DatePickerDemo />
+          </form>  */}
         </div>
     </div>
   )
