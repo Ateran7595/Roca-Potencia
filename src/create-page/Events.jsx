@@ -1,7 +1,7 @@
 import { DatePickerDemo } from "@/components/DatePickerDemo"
 import Header from "./Header"
 import { Input } from "@/components/ui/input"
-// import { Label } from "@/components/label"
+
 
 function Events() {
   return (

@@ -128,7 +128,7 @@ function ServiceEP() {
         <div className="text-[30px] font-bold text-center font-roboto" data-aos="fade-down" >
           <h1 className="text-[40px] ">No Te Pierdas Ninguno De Nuestros Eventos!</h1>
           <div className="border-b-3 w-[55%] m-auto mt-2 mb-5"></div>
-          <Link to={'/eventos'}>
+          <Link to={'/eventos'} onClick={handleScrollToTop}>
             <Button className="mb-10 text-white shadow-2xl text-[30px] font-bold h-[50px] rounded-[100px] border-3 border-white cursor-pointer transition-transform hover:scale-105 hover:opacity-70">
               Proximos Eventos
             </Button>          

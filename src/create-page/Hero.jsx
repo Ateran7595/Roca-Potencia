@@ -5,6 +5,9 @@ import { FaYoutube } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 function Hero() {
+  const handleScrollToTop = () => {
+    window.scrollTo({ top: 0 });
+  };
 
   return (
     <div className="bg-gradient-to-t from-[#dfe9f3] to-white ">
@@ -30,7 +33,7 @@ function Hero() {
           </h2>
           <p className="font-bold">✨ Con Dios, ¡todo es posible! ✨</p>  
         </div>
-        <Link to={'/eventos'}>
+        <Link to={'/eventos'} onClick={handleScrollToTop}>
           <div className="mt-4 flex justify-center gap-5" data-aos="fade-up">
             <Button className="text-[22px] font-bold h-[50px] rounded-[100px] border-2 border-black cursor-pointer transition-transform hover:scale-105 hover:opacity-40 shadow-2xl">Proximos eventos</Button>
           </div>        
