@@ -7,6 +7,7 @@ function Header() {
   const isServicePageEP = location.pathname === '/serviceep';
   const isServicePageJZ = location.pathname === '/servicejz';
   const isAboutPage = location.pathname === '/acerca';
+  const isEventPage = location.pathname === '/eventos'
 
   const headerBackground = isLandingPage
   ? 'bg-[linear-gradient(-20deg,#616161_0%,#9bc5c3_100%)]'
@@ -16,6 +17,8 @@ function Header() {
   ? "bg-[linear-gradient(-20deg,_#fc6076_0%,_#ff9a44_100%)]"
   : isAboutPage
   ? "bg-[linear-gradient(120deg,_#5ee6a8_0%,_#66b8e4_100%)]"
+  : isEventPage
+  ? 'bg-[linear-gradient(120deg,_#c79af0_0%,_#6aa8f0_100%)]'
   : 'bg-gray-800'
   
 
@@ -36,9 +39,11 @@ function Header() {
             </Button>
           </a>
         )}
-        <Button className="text-white shadow-2xl text-[22px] font-bold w-[150px] h-[50px] rounded-[100px] border-3 border-white cursor-pointer transition-transform hover:scale-105 hover:opacity-70">
-          Eventos
-        </Button>
+        <a href="/eventos">
+          <Button className="text-white shadow-2xl text-[22px] font-bold w-[150px] h-[50px] rounded-[100px] border-3 border-white cursor-pointer transition-transform hover:scale-105 hover:opacity-70">
+            Eventos
+          </Button>
+        </a>
         <a href="/acerca">
           <Button className="text-white shadow-2xl text-[22px] font-bold w-[150px] h-[50px] rounded-[100px] border-3 border-white cursor-pointer transition-transform hover:scale-105 hover:opacity-70">
             Acerca

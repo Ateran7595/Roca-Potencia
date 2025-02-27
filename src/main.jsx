@@ -7,6 +7,7 @@ import { RouterProvider } from 'react-router'
 import ServiceJZ from './create-page/ServiceJZ'
 import ServiceEP from './create-page/ServiceEP'
 import About from './create-page/About'
+import Events from './create-page/Events'
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
   {
     path:'/acerca',
     element: <About />
+  },
+  {
+    path:'/eventos',
+    element: <Events />
   }
 ])
 
