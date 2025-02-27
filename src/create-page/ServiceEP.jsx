@@ -6,7 +6,25 @@ import { FaWhatsapp } from "react-icons/fa";
 
 
 function ServiceEP() {
+  const images = ['/ep6.jpg','/ep7.jpg','/EPJ.jpg', '/EPJ2.jpg', '/EPJ3.jpg']
+
+  const [currentI, setCurrentI] = useState(0)
+  const [fade, setFade] = useState(false)
   const [animationKey, setAnimationKey] = useState(0);
+
+  useEffect(() => {
+      const intervalId = setInterval(() => {
+          setFade(true)
+          setTimeout(() => {
+              setCurrentI((prevIndex) =>
+                  prevIndex === images.length - 1 ? 0 : prevIndex + 1
+              )
+              setFade(false)
+          }, 500) // Match the fade duration
+      }, 5000)
+
+      return () => clearInterval(intervalId)
+  }, [images.length])
 
   useEffect(() => {
     if (window.AOS) {
@@ -81,8 +99,11 @@ function ServiceEP() {
       <div className='bg-[linear-gradient(-225deg,_#CBBACC_0%,_#2580B3_100%)] rounded-t-2xl mt-10 text-white p-4 pt-15'>
         <h1 className='text-center text-[35px] font-bold outline w-[40%] m-auto font-roboto'data-aos="fade-down" >Tambien Se Parte De Nuestro Grupo De Jovenes!</h1>
         <div>
-          <div className='m-auto flex justify-center mt-10 mb-8' data-aos="fade-down" >
-            <img src="ep6.jpg" alt="ep6" className='rounded-2xl w-[850px]' />
+          {/* data-aos="fade-down" */}
+          <div className='m-auto flex justify-center mt-10 mb-8'  >
+            <img src={images[currentI]}
+                 alt={`Slide ${currentI + 1}`}  
+                 className={`rounded-2xl w-[850px] h-[650px] object-cover transition-opacity duration-700 ease-in-out shadow-xl ${fade ? 'opacity-0' : 'opacity-100'}`} />
           </div>
           <div className="text-[30px] font-bold text-center font-roboto" data-aos-easing="ease-in-back" data-aos-offset="0" data-aos="fade-zoom-in" >
             <h1 className="text-[40px] ">Roca & Potencia Generacion 316</h1>
