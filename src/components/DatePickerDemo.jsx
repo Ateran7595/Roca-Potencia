@@ -15,9 +15,10 @@ import {
  
 export function DatePickerDemo() {
   const [date, setDate] = React.useState(null)
- 
+  const [popoverOpen, setPopoverOpen] = React.useState(false)
+
   return (
-    <Popover>
+    <Popover open={popoverOpen} onOpenChange={setPopoverOpen}>
       <PopoverTrigger asChild>
         <Button
           variant={"outline"}
