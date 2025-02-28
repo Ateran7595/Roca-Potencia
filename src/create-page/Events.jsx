@@ -1,5 +1,6 @@
 // import { DatePickerDemo } from "@/components/DatePickerDemo"
 import Header from "./Header"
+import { MdOutlineSwipe } from "react-icons/md";
 import { Input } from "@/components/ui/input"
 import { useState } from "react";
 import LoginForm from "./LoginForm";
@@ -13,15 +14,14 @@ import {
 } from "@/components/ui/dialog"
 import { getStorage, ref, uploadBytes } from "firebase/storage";
 import { app } from "/firebase";
+import EventFetcher from "./EventFetcher";
 
 function Events() {
   const [isAdmin, setIsAdmin] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
   const [image, setImage] = useState(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  // const [imgInfo, setImgInfo] = useState(null);
-
-  
+  const [refresh, setRefresh] = useState(false)
 
   const handleLoginSuccess = (user) => {
     setIsAdmin(true);
@@ -36,26 +36,34 @@ function Events() {
     }
   };
 
-  const handleSubmitEvent = async(e) => {
-    e.preventDefault();
-    if(image){
-      console.log("Uploading File...")
+const handleUpload = () => {
+  setRefresh((prev) => !prev)
+}
 
-      const storage = getStorage(app)
+const handleSubmitEvent = async(e) => {
+  e.preventDefault();
+  if(image){
+    console.log("Uploading File...")
 
-      const fileImageRef = ref(storage, `images/${image.name}`);
+    const storage = getStorage(app)
 
-      await uploadBytes(fileImageRef, image)
-      console.log('uploaded an image!')
+    const fileImageRef = ref(storage, `images/${image.name}`);
 
-      setImage(null)
-      document.getElementById('image').value = '';
-      
-      setIsDialogOpen(false); // Close dialog after submitting
-    }
+    await uploadBytes(fileImageRef, image)
+    console.log('uploaded an image!')
+
+    setImage(null)
+    document.getElementById('image').value = '';
+    
+     // Close dialog after submitting
+
+    // if(onUpload) {
+      handleUpload()
+    // }
+  }setIsDialogOpen(false);
     //The above line 'setIsDialogOpen' can be left outside the if statement which
     //will help if multiple img's are being uploaded, but for now we'll leave it this way.
-  };
+};
 
   return (
     <div>
@@ -69,51 +77,56 @@ function Events() {
             </div>
             </div>
         </div>
-        <div className="m-auto flex justify-center items-center mt-[200px]">
-          <div className="font-roboto flex flex-col">
+        <div className="m-auto flex justify-center items-center mt-[200px] p-4">
+          <div className="font-roboto flex flex-col items-center">
             <h1 className="text-[40px] font-bold">Echa Un Vistazo</h1>
-            <Button onClick={() => setShowLogin(true)} className={'bg-neutral-600 text-white font-bold'} >Agregar Evento</Button>
+            <p className="text-[40px]"><MdOutlineSwipe /></p>
+            <div>
+              <EventFetcher refresh={refresh} />
+            </div>
+
+            <Button onClick={() => setShowLogin(true)} className={"text-[22px] font-bold h-[50px] rounded-[100px] border-2 border-black cursor-pointer transition-transform hover:scale-105 hover:opacity-40 shadow-2xl"} >Agregar Evento</Button>
 
             {showLogin && !isAdmin && (
-              <LoginForm
-                showLogin={showLogin}
-                setShowLogin={setShowLogin}
-                onSuccess={handleLoginSuccess}
-                onError={() => alert("Login failed!")}
-              />
-            )}
+                          <LoginForm
+                            showLogin={showLogin}
+                            setShowLogin={setShowLogin}
+                            onSuccess={handleLoginSuccess}
+                            onError={() => alert("Login failed!")}
+                          />
+                        )}
 
-          {isAdmin && (
-             <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-                <DialogContent className="p-6 bg-white">
-                  <DialogHeader>
-                    <DialogTitle>Agregar Evento</DialogTitle>
-                    <DialogDescription>
-                      <form onSubmit={handleSubmitEvent} className="flex flex-col space-y-4">
-                        <label htmlFor="picture">Seleccione Imagen</label>
-                        <Input
-                          id="picture"
-                          type="file"
-                          accept="image/*"
-                          onChange={handleImageChange}
-                        />
-                        {image && (
-                          <section>
-                            <img src={URL.createObjectURL(image)} alt="Preview" className="w-[400px] mt-4" />
-                            <ul>
-                              <li>Name: {image.name}</li>
-                              <li>Type: {image.type}</li>
-                              <li>Size: {image.size} bytes</li>
-                            </ul>
-                          </section>
-                          )}
-                        <Button type="submit" className="mt-4 bg-gray-500 text-white font-bold">Publicar</Button>
-                      </form>
-                    </DialogDescription>
-                  </DialogHeader>
-                </DialogContent>
-              </Dialog>
-          )}
+            {isAdmin && (
+              <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                  <DialogContent className="p-6 bg-white">
+                    <DialogHeader>
+                      <DialogTitle>Agregar Evento</DialogTitle>
+                      <DialogDescription>
+                        <form onSubmit={handleSubmitEvent} className="flex flex-col space-y-4">
+                          <label htmlFor="picture">Seleccione Imagen</label>
+                          <Input
+                            id="picture"
+                            type="file"
+                            accept="image/*"
+                            onChange={handleImageChange}
+                          />
+                          {image && (
+                            <section>
+                              <img src={URL.createObjectURL(image)} alt="Preview" className="w-[400px] mt-4" />
+                              <ul>
+                                <li>Name: {image.name}</li>
+                                <li>Type: {image.type}</li>
+                                <li>Size: {image.size} bytes</li>
+                              </ul>
+                            </section>
+                            )}
+                          <Button type="submit" className="mt-4 bg-gray-500 text-white font-bold">Publicar</Button>
+                        </form>
+                      </DialogDescription>
+                    </DialogHeader>
+                  </DialogContent>
+                </Dialog>
+            )}
           </div>
         </div>
     </div>
