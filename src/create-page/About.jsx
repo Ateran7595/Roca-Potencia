@@ -39,7 +39,7 @@ function About() {
                     <h1 className="text-[40px] font-semibold">Nuestra Vision</h1>
                     <p>Como siervos de Dios, nuestra misión es servir y ayudar a quienes más lo necesitan, guiándonos siempre por la Palabra de Dios. Nos esforzamos por preparar una generación de niños, jóvenes y adultos que no solo conozcan el Evangelio, sino que también lo proclamen con valentía en sus escuelas, trabajos y hogares, llevando luz a donde más se necesita.</p>
                     <p>Creemos firmemente que entregar nuestra vida a Cristo y vivir plenamente en Él no solo nos lleva a una vida victoriosa, sino a una vida <b>más que victoriosa.</b> Porque sabemos que con Cristo, <b>todo es posible!</b></p>
-                    <p>Nuestro deseo es que el mensaje de salvación y esperanza de Jesucristo llegue a cada rincón del mundo, comenzando por nuestros hogares. Confiamos en que Su palabra nunca regresa vacía, sino que transforma vidas con Su abundante <b>misericordia, paz, amor y vida</b> para todo aquel que cree en su corazón.</p>
+                    <p>Nuestro deseo es que el mensaje de salvación y esperanza de Jesucristo llegue a cada rincón del mundo, comenzando por nuestros hogares. Confiamos en que Su palabra nunca regresa vacía, sino que transforma vidas con Su abundante <b>misericordia, paz y amor</b> para todo aquel que cree en su corazón.</p>
                     <p ><span className="font-semibold">Marcos 9:23</span> <i>"Jesús le dijo: Si puedes creer, al que cree todo le es posible."</i> </p>
                 </div>
                 <div className="overflow-hidden pt-20" data-aos="fade-left">

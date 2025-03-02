@@ -15,6 +15,7 @@ import {
 import { getStorage, ref, uploadBytes } from "firebase/storage";
 import { app } from "/firebase";
 import EventFetcher from "./EventFetcher";
+import Newsletter from "./Newsletter";
 
 function Events() {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -24,9 +25,8 @@ function Events() {
   const [refresh, setRefresh] = useState(false)
 
   const handleLoginSuccess = (user) => {
-    setIsAdmin(true);
+    setIsAdmin(true); //will allow user to add/delete img's
     setShowLogin(false); // Hide login form
-    setIsDialogOpen(true)
   };
 
   const handleImageChange = (event) => {
@@ -57,12 +57,11 @@ const handleSubmitEvent = async(e) => {
     
      // Close dialog after submitting
 
-    // if(onUpload) {
-      handleUpload()
-    // }
-  }setIsDialogOpen(false);
-    //The above line 'setIsDialogOpen' can be left outside the if statement which
-    //will help if multiple img's are being uploaded, but for now we'll leave it this way.
+ setIsDialogOpen(false);
+  }
+  
+  //The above line 'setIsDialogOpen' can be left outside the if statement which
+  //will help if multiple img's are being uploaded.
 };
 
   return (
@@ -82,11 +81,21 @@ const handleSubmitEvent = async(e) => {
             <h1 className="text-[40px] font-bold">Echa Un Vistazo</h1>
             <p className="text-[40px]"><MdOutlineSwipe /></p>
             <div>
-              <EventFetcher refresh={refresh} />
+              {/* This component helps to fetch all img's from firebase and if user is
+                  admin, then it will show the delete button for the events */}
+              <EventFetcher refresh={refresh} isAdmin={isAdmin} />
             </div>
 
-            <Button onClick={() => setShowLogin(true)} className={"text-[22px] font-bold h-[50px] rounded-[100px] border-2 border-black cursor-pointer transition-transform hover:scale-105 hover:opacity-40 shadow-2xl"} >Agregar Evento</Button>
+            <Button onClick={() => {
+              if(isAdmin){
+                  setIsDialogOpen(true)
+                }else{
+                  setShowLogin(true)
+                }
+              }} 
+                    className={"text-[22px] font-bold h-[50px] rounded-[100px] border-2 border-black cursor-pointer transition-transform hover:scale-105 hover:opacity-40 shadow-2xl"} >Agregar/Eliminar Evento</Button>
 
+            {/* Functions to show login information, but can only be used by admins */}
             {showLogin && !isAdmin && (
                           <LoginForm
                             showLogin={showLogin}
@@ -95,8 +104,8 @@ const handleSubmitEvent = async(e) => {
                             onError={() => alert("Login failed!")}
                           />
                         )}
-
-            {isAdmin && (
+              
+              {/* Functions to open dialog and add img's once the user is logged in */}
               <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                   <DialogContent className="p-6 bg-white">
                     <DialogHeader>
@@ -126,8 +135,10 @@ const handleSubmitEvent = async(e) => {
                     </DialogHeader>
                   </DialogContent>
                 </Dialog>
-            )}
           </div>
+        </div>
+        <div className="flex justify-center items-center">
+          <Newsletter />
         </div>
     </div>
   )

@@ -38,10 +38,10 @@ function Services() {
                 ←Mas Informacion
               </p>
             </div>
-          </div></a>
-        {/* </Link> */}
-
-        <Link to={"/servicejz"} onClick={handleScrollToTop}>
+          </div>
+        </a>
+        
+        <a href="/servicejz">
           <div
             className="flex mt-10 p-3 cursor-pointer transition-transform hover:scale-105 hover:shadow-2xl hover:border-2 hover:border-white hover:rounded-2xl"
             data-aos="fade-left"
@@ -62,7 +62,8 @@ function Services() {
               />
             </div>
           </div>
-        </Link>
+        </a>
+        
       </div>
     </div>
   );
