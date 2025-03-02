@@ -35,8 +35,8 @@ function Newsletter() {
         onChange={(e) => setEmail(e.target.value)}
         className="mt-2 p-2 w-full border rounded-lg"
       />
-      <Button onClick={handleSubscribe} className="mt-3 bg-blue-500 text-white w-full">
-        Subscribe
+      <Button onClick={handleSubscribe} className="mt-3 bg-blue-500 text-white w-full font-bold">
+        Subscribirse
       </Button>
       {status && <p className="mt-2 text-sm">{status}</p>}
     </div>
