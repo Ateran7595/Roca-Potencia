@@ -70,7 +70,7 @@ function ServiceEP() {
             <Button className="text-[22px] mt-3 font-bold h-[50px] rounded-[100px] border-2 border-black cursor-pointer transition-transform hover:scale-105 hover:opacity-40 shadow-2xl" >Mapa</Button>
           </a>
         </div>
-        <div className="text-[30px] mt-15">
+        <div className="text-[30px] mt-15" data-aos="zoom-in-down">
           <div className="border-2 rounded-xl w-[40%] m-auto mt-2 mb-2">
             <h1 className="text-[40px] font-bold">Escuela Dominical Todas Edades</h1>
           </div>
@@ -128,11 +128,11 @@ function ServiceEP() {
         <div className="text-[30px] font-bold text-center font-roboto" data-aos="fade-down" >
           <h1 className="text-[40px] ">No Te Pierdas Ninguno De Nuestros Eventos!</h1>
           <div className="border-b-3 w-[55%] m-auto mt-2 mb-5"></div>
-          <Link to={'/eventos'} onClick={handleScrollToTop}>
+          <a href="/eventos">
             <Button className="mb-10 text-white shadow-2xl text-[30px] font-bold h-[50px] rounded-[100px] border-3 border-white cursor-pointer transition-transform hover:scale-105 hover:opacity-70">
               Proximos Eventos
             </Button>          
-          </Link>
+          </a>
 
         </div>
         <div>

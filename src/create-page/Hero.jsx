@@ -33,11 +33,11 @@ function Hero() {
           </h2>
           <p className="font-bold">✨ Con Dios, ¡todo es posible! ✨</p>  
         </div>
-        <Link to={'/eventos'} onClick={handleScrollToTop}>
+        <a href="/eventos">
           <div className="mt-4 flex justify-center gap-5" data-aos="fade-up">
             <Button className="text-[22px] font-bold h-[50px] rounded-[100px] border-2 border-black cursor-pointer transition-transform hover:scale-105 hover:opacity-40 shadow-2xl">Proximos eventos</Button>
           </div>        
-        </Link>
+        </a>
 
       </div>
       <Services />

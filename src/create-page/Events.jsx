@@ -98,7 +98,7 @@ const handleSubmitEvent = async (e) => {
             </div>
             </div>
         </div>
-        <div className="m-auto flex justify-center items-center mt-[200px] p-4">
+        <div className="m-auto flex justify-center items-center mt-[200px] p-4" data-aos="zoom-in-down">
           <div className="font-roboto flex flex-col items-center">
             <h1 className="text-[40px] font-bold">Echa Un Vistazo</h1>
             <p className="text-[40px]"><MdOutlineSwipe /></p>
@@ -170,7 +170,7 @@ const handleSubmitEvent = async (e) => {
                 </Dialog>
           </div>
         </div>
-        <div className="flex justify-center items-center mt-10 pt-15 pb-15 bg-[linear-gradient(120deg,_#c79af0_0%,_#6aa8f0_100%)] rounded-t-2xl">
+        <div className="flex justify-center items-center mt-10 pt-15 pb-15 bg-[linear-gradient(120deg,_#c79af0_0%,_#6aa8f0_100%)] rounded-t-2xl" data-aos="zoom-in-down">
           <Newsletter />
         </div>
     </div>
