@@ -37,16 +37,16 @@ function Newsletter() {
   };
 
   return (
-    <div className="flex flex-col items-center p-4 bg-gray-200 rounded-lg w-[400px] mt-5">
-      <h2 className="text-xl font-bold text-center">Subscribase Para Recibir Informacion de Nuestros Proximos Eventos!</h2>
+    <div className="flex flex-col gap-2 items-center p-4 rounded-lg w-[60%] border-white border-2 mt-5 font-roboto">
+      <h2 className="text-xl font-bold text-center text-white text-[35px] ">Subscribete Para Recibir Informacion de Nuestros Proximos Eventos!</h2>
       <Input
         type="email"
         placeholder="Ingrese Correo Electronico"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        className="mt-2 p-2 w-full border rounded-lg"
+        className="mt-2 p-2 border rounded-lg w-[60%] border-white text-white h-[40px]"
       />
-      <Button onClick={handleSubscribe} className="mt-3 bg-blue-500 text-white w-full font-bold">
+      <Button onClick={handleSubscribe} className={"text-[22px] w-[60%] text-white font-bold h-[50px] rounded-xl border-2 border-white cursor-pointer transition-transform hover:scale-105 hover:opacity-40 shadow-2xl"}>
         Subscribirse
       </Button>
       {status && <p className="mt-2 text-sm">{status}</p>}

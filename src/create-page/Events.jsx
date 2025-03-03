@@ -16,6 +16,7 @@ import { getStorage, ref, uploadBytes } from "firebase/storage";
 import { app } from "/firebase";
 import EventFetcher from "./EventFetcher";
 import Newsletter from "./Newsletter";
+import { sendEventEmailToSubscribers } from "./EmailsFetcher/FetchEmails";
 
 function Events() {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -32,7 +33,7 @@ function Events() {
   const handleImageChange = (event) => {
     const file = event.target.files[0]; // Get the selected file
     if (file) {
-      setImage(file); // Generate a preview URL
+      setImage(file);
     }
   };
 
@@ -40,28 +41,49 @@ const handleUpload = () => {
   setRefresh((prev) => !prev)
 }
 
-const handleSubmitEvent = async(e) => {
+const handleSubmitEvent = async (e) => {
   e.preventDefault();
-  if(image){
-    console.log("Uploading File...")
 
-    const storage = getStorage(app)
-
-    const fileImageRef = ref(storage, `images/${image.name}`);
-
-    await uploadBytes(fileImageRef, image)
-    console.log('uploaded an image!')
-
-    setImage(null)
-    document.getElementById('image').value = '';
-    
-     // Close dialog after submitting
-
- setIsDialogOpen(false);
+  if (!image) {
+    console.error("No image selected.");
+    return;
   }
-  
-  //The above line 'setIsDialogOpen' can be left outside the if statement which
-  //will help if multiple img's are being uploaded.
+
+  console.log("Uploading File...");
+
+  const storage = getStorage(app);
+  const fileImageRef = ref(storage, `images/${image.name}`);
+
+  await uploadBytes(fileImageRef, image);
+  console.log("Uploaded an image!");
+
+  setImage(null);
+  document.getElementById("picture").value = "";
+
+  // Get input values
+  const eventDetails = {
+    name: document.getElementById("eventName").value.trim(),
+    location: document.getElementById('eventLocation').value.trim(),
+    date: document.getElementById("eventDate").value.trim(),
+    description: document.getElementById("eventDescription").value.trim(),
+  };
+
+  console.log("Event Details:", eventDetails);
+
+  // Ensure valid data before sending the email
+  if (eventDetails.name && eventDetails.date && eventDetails.description) {
+    try {
+      await sendEventEmailToSubscribers(eventDetails);
+      console.log("Email sending triggered.");
+    } catch (error) {
+      console.error("Error sending email:", error);
+    }
+  } else {
+    console.error("Missing event details. Email not sent.");
+  }
+
+  // Close dialog after submitting
+  setIsDialogOpen(false);
 };
 
   return (
@@ -129,6 +151,17 @@ const handleSubmitEvent = async(e) => {
                               </ul>
                             </section>
                             )}
+                            <label htmlFor="eventName">Nombre del Evento</label>
+                            <Input id="eventName" type="text" placeholder="Ej. Reunión Juvenil" required />
+
+                            <label htmlFor="eventName">Localizacion</label>
+                            <Input id="eventLocation" type="text" placeholder="eg. Juarez" required />
+
+                            <label htmlFor="eventDate">Fecha del Evento</label>
+                            <Input id="eventDate" type="date" required />
+
+                            <label htmlFor="eventDescription">Descripción</label>
+                            <textarea id="eventDescription" placeholder="Detalles sobre el evento..." required></textarea>
                           <Button type="submit" className="mt-4 bg-gray-500 text-white font-bold">Publicar</Button>
                         </form>
                       </DialogDescription>
@@ -137,7 +170,7 @@ const handleSubmitEvent = async(e) => {
                 </Dialog>
           </div>
         </div>
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center mt-10 pt-15 pb-15 bg-[linear-gradient(120deg,_#c79af0_0%,_#6aa8f0_100%)] rounded-t-2xl">
           <Newsletter />
         </div>
     </div>
