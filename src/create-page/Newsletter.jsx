@@ -3,14 +3,19 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { getFirestore, collection, addDoc, query, where, getDocs } from "firebase/firestore";
 import { app } from "/firebase";
+import { Toaster } from "@/components/ui/sonner";
+import { toast } from "sonner";
 
 function Newsletter() {
   const [email, setEmail] = useState("");
-  const [status, setStatus] = useState("");
 
   const handleSubscribe = async () => {
-    if (!email) {
-      setStatus("Por Favor Ingrese correo valido.");
+    if (!email || !email.includes('@')) {
+      toast("Por Favor Ingrese correo valido.")
+      return;
+    }
+    if(!email.includes('@gmail.com')){
+      toast("Por Favor Subscribirse con Gmail")
       return;
     }
 
@@ -22,22 +27,23 @@ function Newsletter() {
 
       if (!querySnapshot.empty) {
         // If email exists, inform the user
-        setStatus("Correo ya existente");
+        toast("Correo ya existente")
       } else {
         // If email doesn't exist, add the new subscriber
         await addDoc(collection(db, "subscribers"), { email });
-        setStatus("Subscrito Exitosamente!");
+        toast("Subscrito Exitosamente!")
       }
 
       setEmail(""); // Clear input field after action
     } catch (error) {
       console.error("Error subscribing:", error);
-      setStatus("Subscripcion Fallida. Intente De Nuevo.");
+      toast("Subscripcion Fallida. Intente De Nuevo.")
     }
   };
 
   return (
     <div className="flex flex-col gap-2 items-center p-4 rounded-lg w-[60%] border-white border-2 mt-5 font-roboto">
+      <Toaster />
       <h2 className="text-xl font-bold text-center text-white text-[35px] ">Subscribete Para Recibir Informacion de Nuestros Proximos Eventos!</h2>
       <Input
         type="email"
@@ -49,7 +55,6 @@ function Newsletter() {
       <Button onClick={handleSubscribe} className={"text-[22px] w-[60%] text-white font-bold h-[50px] rounded-xl border-2 border-white cursor-pointer transition-transform hover:scale-105 hover:opacity-40 shadow-2xl"}>
         Subscribirse
       </Button>
-      {status && <p className="mt-2 text-sm">{status}</p>}
     </div>
   );
 }
