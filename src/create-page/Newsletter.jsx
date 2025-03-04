@@ -42,17 +42,17 @@ function Newsletter() {
   };
 
   return (
-    <div className="flex flex-col gap-2 items-center p-4 rounded-lg w-[60%] border-white border-2 mt-5 font-roboto">
+    <div className="flex flex-col gap-2 items-center p-4 rounded-lg md:w-[60%] xs:w-[95%] border-white border-2 mt-5 font-roboto">
       <Toaster />
-      <h2 className="text-xl font-bold text-center text-white text-[35px] ">Subscribete Para Recibir Informacion de Nuestros Proximos Eventos!</h2>
+      <h2 className="text-xl font-bold text-center text-white md:text-[35px] xs:text-[26px] ">Subscribete Para Recibir Informacion de Nuestros Proximos Eventos!</h2>
       <Input
         type="email"
         placeholder="Ingrese Correo Electronico"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        className="mt-2 p-2 border rounded-lg w-[60%] border-white text-white h-[40px]"
+        className="mt-2 p-2 border rounded-lg md:w-[60%] border-white text-white h-[40px]"
       />
-      <Button onClick={handleSubscribe} className={"text-[22px] w-[60%] text-white font-bold h-[50px] rounded-xl border-2 border-white cursor-pointer transition-transform hover:scale-105 hover:opacity-40 shadow-2xl"}>
+      <Button onClick={handleSubscribe} className={"text-[22px] md:w-[60%] xs:w-full text-white font-bold h-[50px] rounded-xl border-2 border-white cursor-pointer transition-transform hover:scale-105 hover:opacity-40 shadow-2xl mt-2"}>
         Subscribirse
       </Button>
     </div>

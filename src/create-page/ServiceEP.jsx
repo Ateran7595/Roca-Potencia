@@ -49,20 +49,20 @@ function ServiceEP() {
   return (
     <div className="bg-gradient-to-t from-[#dfe9f3] to-white ">
       <Header />
-      <div className="bg-[linear-gradient(-225deg,_#CBBACC_0%,_#2580B3_100%)] flex flex-col items-center justify-center w-full p-5 h-[900px] relative">
+      <div className="bg-[linear-gradient(-225deg,_#CBBACC_0%,_#2580B3_100%)] flex flex-col items-center justify-center w-full p-5 lg:h-[900px] relative">
         <div className="relative w-full flex items-center justify-center">
-          <img src="/rocaEP.jpg" alt="roca5" className="w-[1300px] rounded-[50px] brightness-70 relative top-[150px] object-cover" data-aos="fade-up" />
-          <div className="absolute text-[100px] text-white bottom-[610px] text-center" data-aos="fade-down">
-            <h1 className="font-semibold" data-aos="fade-down">Roca & Potencia El Paso</h1>
-            <p className="text-[36px] font-semibold outline">Todo es posible si puedes creer</p>
+          <img src="/rocaEP.jpg" alt="roca5" className="w-[1300px] md:rounded-[50px] sm:rounded-[30px] xs:rounded-[20px] brightness-70 relative md:top-[150px] sm:top-[100px] xs:top-[60px] object-cover" data-aos="fade-up" />
+          <div className="absolute text-white xl:bottom-[620px] lg:bottom-[410px] md:bottom-[260px] sm:bottom-[240px] xs:bottom-[130px] text-center" data-aos="fade-down">
+            <h1 className="font-semibold lg:text-[80px] md:text-[60px] sm:text-[50px] xs:text-[30px]" data-aos="fade-down">Roca & Potencia El Paso</h1>
+            <p className="lg:text-[36px] md:text-[25px] sm:text-[20px] md:w-full xs:w-[90%] m-auto font-semibold outline">Todo es posible si puedes creer</p>
           </div>
         </div>
       </div>
 
-      <div className="mt-[200px] font-roboto text-center font-semibold ">
-        <div className="text-[30px]" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-offset="0">
-          <h1 className="text-[40px] font-bold">Roca & Potencia El Paso, TX</h1>
-          <div className="border-b-3 w-[40%] m-auto mt-2 mb-2"></div>
+      <div className="md:mt-[200px] sm:mt-[120px] xs:mt-[80px] lg:text-xl md:text-[18px] lg:w-full xs:w-[90%] m-auto font-roboto text-center font-semibold animate ">
+        <div className="md:text-[30px] xs:text-[22px]" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-offset="0">
+          <h1 className="md:text-[40px] xs:text-[28px] font-bold">Roca & Potencia El Paso, TX</h1>
+          <div className="border-b-3 md:w-[40%] sm:w-[60%] xs:w-[75%] m-auto mt-2 mb-2"></div>
           <p>915 Delta Drive, El Paso, Texas</p>
           <p>Domingos: 11:00am - 1:30pm</p>
           <p>Viernes: 7pm - 9pm</p>
@@ -70,45 +70,44 @@ function ServiceEP() {
             <Button className="text-[22px] mt-3 font-bold h-[50px] rounded-[100px] border-2 border-black cursor-pointer transition-transform hover:scale-105 hover:opacity-40 shadow-2xl" >Mapa</Button>
           </a>
         </div>
-        <div className="text-[30px] mt-15" data-aos="zoom-in-down">
-          <div className="border-2 rounded-xl w-[40%] m-auto mt-2 mb-2">
-            <h1 className="text-[40px] font-bold">Escuela Dominical Todas Edades</h1>
+        <div className="md:text-[30px] xs:text-[22px] mt-15" data-aos="zoom-in-down">
+          <div className="border-2 rounded-xl lg:w-[40%] m-auto mt-2 mb-2">
+            <h1 className="md:text-[40px] xs:text-[26px] font-bold">Escuela Dominical Todas Edades</h1>
           </div>
-          <p>Domingos: 9am - 11:00am</p>
+          <p>Domingos: 9am - 10:30am</p>
         </div>
       </div>
 
-      <div className='mt-15 mb-4 w-[30%] m-auto outline-3 rounded-xl' data-aos="fade-down">
-        <h1 className='text-[30px] font-bold font-roboto text-center shadow-2xl'>Clases Para Niños Desde Edades 3-10+</h1>
+      <div className='mt-15 mb-4 lg:w-[30%] xs:w-[90%] m-auto outline-2 rounded-xl' data-aos="fade-down">
+        <h1 className='lg:text-[30px] xs:text-[26px] font-bold font-roboto text-center shadow-2xl'>Clases Para Niños Desde Edades 3-10+</h1>
       </div>
 
       {/* Add a unique key to force rerender */}
       <div className="flex gap-1 w-full overflow-hidden" data-aos="zoom-in-down" key={animationKey}>
         <div className="relative flex gap-1 z-0 animate-loop-scroll">
-          <img src="ep1.jpg" alt="RPEP" className="brightness-75 max-w-none object-cover h-[500px] rounded-2xl" />
-          <img src="ep2.jpg" alt="RPEP" className="brightness-75 max-w-none object-cover h-[500px] rounded-2xl" />
-          <img src="ep3.jpg" alt="RPEP" className="brightness-75 max-w-none object-cover h-[500px] rounded-2xl" />
-          <img src="ep5.jpg" alt="RPEP" className="brightness-75 max-w-none object-cover h-[500px] rounded-2xl" />
+          <img src="ep1.jpg" alt="RPEP" className="brightness-75 max-w-none object-cover lg:h-[500px] md:h-[400px] xs:h-[270px] rounded-2xl" />
+          <img src="ep2.jpg" alt="RPEP" className="brightness-75 max-w-none object-cover lg:h-[500px] md:h-[400px] xs:h-[270px] rounded-2xl" />
+          <img src="ep3.jpg" alt="RPEP" className="brightness-75 max-w-none object-cover lg:h-[500px] md:h-[400px] xs:h-[270px] rounded-2xl" />
+          <img src="ep5.jpg" alt="RPEP" className="brightness-75 max-w-none object-cover lg:h-[500px] md:h-[400px] xs:h-[270px] rounded-2xl" />
         </div>
         <div className="relative flex gap-1 z-0 animate-loop-scroll">
-          <img src="ep1.jpg" alt="RPEP" className="brightness-75 max-w-none object-cover h-[500px] rounded-2xl" />
-          <img src="ep2.jpg" alt="RPEP" className="brightness-75 max-w-none object-cover h-[500px] rounded-2xl" />
-          <img src="ep3.jpg" alt="RPEP" className="brightness-75 max-w-none object-cover h-[500px] rounded-2xl" />
-          <img src="ep5.jpg" alt="RPEP" className="brightness-75 max-w-none object-cover h-[500px] rounded-2xl" />
+          <img src="ep1.jpg" alt="RPEP" className="brightness-75 max-w-none object-cover lg:h-[500px] md:h-[400px] xs:h-[270px] rounded-2xl" />
+          <img src="ep2.jpg" alt="RPEP" className="brightness-75 max-w-none object-cover lg:h-[500px] md:h-[400px] xs:h-[270px] rounded-2xl" />
+          <img src="ep3.jpg" alt="RPEP" className="brightness-75 max-w-none object-cover lg:h-[500px] md:h-[400px] xs:h-[270px] rounded-2xl" />
+          <img src="ep5.jpg" alt="RPEP" className="brightness-75 max-w-none object-cover lg:h-[500px] md:h-[400px] xs:h-[270px] rounded-2xl" />
         </div>
       </div>
       <div className='bg-[linear-gradient(-225deg,_#CBBACC_0%,_#2580B3_100%)] rounded-t-2xl mt-10 text-white p-4 pt-15'>
-        <h1 className='text-center text-[35px] font-bold outline w-[40%] m-auto font-roboto'data-aos="fade-down" >Tambien Se Parte De Nuestro Grupo De Jovenes!</h1>
+        <h1 className='text-center md:text-[35px] xs:text-[26px] font-bold outline md:w-[40%] xs:w-[90%] m-auto font-roboto' data-aos="fade-down" >Tambien Se Parte De Nuestro Grupo De Jovenes!</h1>
         <div>
-          {/* data-aos="fade-down" */}
-          <div className='m-auto flex justify-center mt-10 mb-8'  >
+          <div className='m-auto flex justify-center mt-10 mb-8' data-aos="fade-down" >
             <img src={images[currentI]}
                  alt={`Slide ${currentI + 1}`}  
-                 className={`rounded-2xl w-[850px] h-[650px] object-cover transition-opacity duration-700 ease-in-out shadow-xl ${fade ? 'opacity-0' : 'opacity-100'}`} />
+                 className={`rounded-2xl md:w-[850px] xs:w-[400px] md:h-[650px] xs:h-[270px] object-cover transition-opacity duration-700 ease-in-out shadow-xl ${fade ? 'opacity-0' : 'opacity-100'}`} />
           </div>
-          <div className="text-[30px] font-bold text-center font-roboto" data-aos-easing="ease-in-back" data-aos-offset="0" data-aos="fade-zoom-in" >
-            <h1 className="text-[40px] ">Roca & Potencia Generacion 316</h1>
-            <div className="border-b-3 w-[40%] m-auto mt-2 mb-2"></div>
+          <div className="md:text-[30px] xs:text-[22px] font-bold text-center font-roboto" data-aos-easing="ease-in-back" data-aos-offset="0" data-aos="fade-zoom-in" >
+            <h1 className="md:text-[40px] xs:text-[28px] font-bold">Roca & Potencia Generacion 316</h1>
+            <div className="border-b-3 md:w-[40%] sm:w-[60%] xs:w-[75%] m-auto mt-2 mb-2"></div>
             <p>Todos Los Viernes</p>
             <p>7:00pm - 9:00pm</p>
             <div className='flex justify-center items-center gap-5'>
@@ -120,13 +119,13 @@ function ServiceEP() {
         <div className='mt-10 mb-8' data-aos="fade-up" >
           <video
             src="/videos/jovenes3.mp4"
-            className="m-auto flex justify-center items-center rounded-2xl h-[650px]"
+            className="m-auto flex justify-center items-center rounded-2xl md:h-[650px] xs:h-[550px] "
             controls
             loop
           />
         </div>
-        <div className="text-[30px] font-bold text-center font-roboto" data-aos="fade-down" >
-          <h1 className="text-[40px] ">No Te Pierdas Ninguno De Nuestros Eventos!</h1>
+        <div className="md:text-[30px] xs:text-[22px] font-bold text-center font-roboto" data-aos="fade-down" >
+          <h1 className="md:text-[40px] xs:text-[28px] font-bold ">No Te Pierdas Ninguno De Nuestros Eventos!</h1>
           <div className="border-b-3 w-[55%] m-auto mt-2 mb-5"></div>
           <a href="/eventos">
             <Button className="mb-10 text-white shadow-2xl text-[30px] font-bold h-[50px] rounded-[100px] border-3 border-white cursor-pointer transition-transform hover:scale-105 hover:opacity-70">

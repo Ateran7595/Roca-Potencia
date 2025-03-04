@@ -57,7 +57,7 @@ function EventFetcher({ refresh, isAdmin }) {
 
     return (
         <div className='flex justify-center items-center flex-col'>
-            <Carousel className={'p-5 w-[70%] m-auto'}>
+            <Carousel className={'md:p-5 xs:pb-5 xs:pt-5 md:w-[70%]  m-auto'}>
                 <CarouselContent>
                     {images.map((image, index) => (
                         <CarouselItem key={index} className={'flex flex-col justify-center items-center'}>

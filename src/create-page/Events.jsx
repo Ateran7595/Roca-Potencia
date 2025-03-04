@@ -89,19 +89,19 @@ const handleSubmitEvent = async (e) => {
   return (
     <div>
         <Header />
-        <div className="bg-[linear-gradient(120deg,_#c79af0_0%,_#6aa8f0_100%)] flex flex-col items-center justify-center w-full p-5 h-[900px] relative">
+        <div className="bg-[linear-gradient(120deg,_#c79af0_0%,_#6aa8f0_100%)] flex flex-col items-center justify-center w-full p-5 lg:h-[900px] relative">
             <div className="relative w-full flex items-center justify-center">
-            <img src="/roca5.jpg" alt="roca5" className="w-[1300px] rounded-[50px] brightness-70 relative top-[150px] object-cover" data-aos="fade-up" />
-            <div className="absolute text-[100px] text-white bottom-[610px] text-center" data-aos="fade-down">
-                <h1 className="font-semibold" data-aos="fade-down">Proximos Eventos</h1>
-                <p className="text-[36px] font-semibold outline">No Te Los Puedes Perder!</p>
+            <img src="/roca5.jpg" alt="roca5" className="w-[1300px] md:rounded-[50px] sm:rounded-[30px] xs:rounded-[20px] brightness-70 relative md:top-[150px] sm:top-[100px] xs:top-[60px] object-cover" data-aos="fade-up" />
+            <div className="absolute text-white lg:bottom-[610px] md:bottom-[260px] sm:bottom-[240px] xs:bottom-[130px] text-center" data-aos="fade-down">
+                <h1 className="font-semibold lg:text-[100px] md:text-[70px] sm:text-[50px] xs:text-[35px]" data-aos="fade-down">Proximos Eventos</h1>
+                <p className="lg:text-[36px] md:text-[25px] sm:text-[20px] font-semibold outline">No Te Los Puedes Perder!</p>
             </div>
             </div>
         </div>
-        <div className="m-auto flex justify-center items-center mt-[200px] p-4" data-aos="zoom-in-down">
+        <div className="md:mt-[200px] sm:mt-[120px] xs:mt-[100px] lg:text-xl md:text-[18px] lg:w-full xs:w-[90%] m-auto font-roboto text-center font-semibold animate" >
           <div className="font-roboto flex flex-col items-center">
-            <h1 className="text-[40px] font-bold">Echa Un Vistazo</h1>
-            <p className="text-[40px]"><MdOutlineSwipe /></p>
+            <h1 className="md:text-[40px] xs:text-[30px] font-bold">Echa Un Vistazo</h1>
+            <p className="text-[40px] flex flex-col items-center"><MdOutlineSwipe /><span className="text-[15px]">Deslizar</span></p>
             <div>
               {/* This component helps to fetch all img's from firebase and if user is
                   admin, then it will show the delete button for the events */}

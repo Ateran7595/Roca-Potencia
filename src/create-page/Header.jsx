@@ -23,29 +23,29 @@ function Header() {
   
 
   return (
-    <div className={`flex justify-between items-center font-roboto ${headerBackground} p-6`}>
+    <div className={`flex lg:flex-row xs:flex-col xs:gap-4 xs:flex-wrap justify-between items-center font-roboto ${headerBackground} p-6`}>
       <a href="/">
         <div className='flex items-center gap-2 transition-transform hover:scale-105 cursor-pointer' data-aos="fade-zoom-in">
-          <img src="/RPlogo.png" alt="logo" className='w-[90px] h-[90px]' />
-          <p className='font-bold text-[35px] text-white'>Roca & Potencia</p>
+          <img src="/RPlogo.png" alt="logo" className='sm:w-[90px] sm:h-[90px] xs:w-[65px] xs:h-[65px]' />
+          <p className='font-bold sm:text-[35px] xs:text-[30px] text-white'>Roca & Potencia</p>
         </div>
       </a>
-      <div className='flex gap-5' data-aos="fade-zoom-in">
+      <div className='flex xs:flex-wrap justify-center gap-5' data-aos="fade-zoom-in">
         {/* Conditionally render the "Servicios" button only on the landing page */}
         {isLandingPage && (
           <a href="#service">
-            <Button className="text-white shadow-2xl text-[22px] font-bold w-[150px] h-[50px] rounded-[100px] border-3 border-white cursor-pointer transition-transform hover:scale-105 hover:opacity-70">
+            <Button className="text-white shadow-2xl text-[22px] font-bold sm:w-[150px] sm:h-[50px] xs:w-[137px] xs:h-[37px] rounded-[100px] border-3 border-white cursor-pointer transition-transform hover:scale-105 hover:opacity-70">
               Servicios
             </Button>
           </a>
         )}
         <a href="/eventos">
-          <Button className="text-white shadow-2xl text-[22px] font-bold w-[150px] h-[50px] rounded-[100px] border-3 border-white cursor-pointer transition-transform hover:scale-105 hover:opacity-70">
+          <Button className="text-white shadow-2xl text-[22px] font-bold sm:w-[150px] sm:h-[50px] xs:w-[137px] xs:h-[37px] rounded-[100px] border-3 border-white cursor-pointer transition-transform hover:scale-105 hover:opacity-70">
             Eventos
           </Button>
         </a>
         <a href="/acerca">
-          <Button className="text-white shadow-2xl text-[22px] font-bold w-[150px] h-[50px] rounded-[100px] border-3 border-white cursor-pointer transition-transform hover:scale-105 hover:opacity-70">
+          <Button className="text-white shadow-2xl text-[22px] font-bold sm:w-[150px] sm:h-[50px] xs:w-[137px] xs:h-[37px] rounded-[100px] border-3 border-white cursor-pointer transition-transform hover:scale-105 hover:opacity-70">
             Acerca
           </Button>
         </a>
