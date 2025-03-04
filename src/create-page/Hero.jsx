@@ -21,7 +21,7 @@ function Hero() {
             data-aos-easing="ease-in-back"
             data-aos-offset="0">
           <h1 className="md:text-[40px] xs:text-[30px] font-bold">¡Bienvenidos!</h1>
-          <div className="border-b-3 md:w-[40%] sm:w-[60%] xs:w-[75%] m-auto mt-2 mb-2"></div>
+          <div className="border-b-4 md:w-[40%] sm:w-[60%] xs:w-[75%] m-auto mt-2 mb-2"></div>
           <p>Te invitamos a ser parte de nuestra comunidad y a fortalecer tu fe con nosotros.</p>
           <h2>"Cuando las fuerzas fallan, Él sostiene.  
               Cuando el camino se nubla, Él ilumina.  
@@ -38,7 +38,7 @@ function Hero() {
       <Services />
       <div className="font-roboto text-center flex flex-col mt-6 pb-6" data-aos="fade-up">
         <h1 className="text-[30px] font-semibold">Tambien Visitanos</h1>
-        <div className="border-b-3 md:w-[40%] sm:w-[60%] xs:w-[75%] m-auto mt-2 mb-2"></div>
+        <div className="border-b-4 md:w-[40%] sm:w-[60%] xs:w-[75%] m-auto mt-2 mb-2"></div>
         <div className="flex justify-center gap-10">
           <a href="https://www.facebook.com/IglesiaRocaYPotencia/?locale=es_LA" target="_blank" className="text-[50px] transition-transform hover:scale-105 hover:opacity-40 shadow-2xl" ><FaFacebook /></a>
           <a href="https://www.youtube.com/channel/UCY4c8J0EmHRjKRu8js6L-hA" target="_blank" className="text-[50px] transition-transform hover:scale-105 hover:opacity-40 shadow-2xl"><FaYoutube /></a>
