@@ -91,7 +91,6 @@ function ServiceJZ() {
           <img src="jz8.jpg" alt="RPJuarez" className="brightness-75 max-w-none object-cover lg:h-[500px] md:h-[400px] xs:h-[270px] rounded-2xl" />
           <img src="jz12.jpg" alt="RPJuarez" className="brightness-75 max-w-none object-cover lg:h-[500px] md:h-[400px] xs:h-[270px] rounded-2xl" />
           <img src="jz7.jpg" alt="RPJuarez" className="brightness-75 max-w-none object-cover lg:h-[500px] md:h-[400px] xs:h-[270px] rounded-2xl" />
-          
         </div>
       </div>
       <div className='bg-[linear-gradient(-20deg,_#fc6076_0%,_#ff9a44_100%)] rounded-t-2xl mt-10 text-white p-4 pt-15'>

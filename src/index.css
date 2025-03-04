@@ -27,16 +27,6 @@
   }
 }
 
-/* Custom xs breakpoint using media query */
-@media (min-width: 360px) {
-  .xs\:text-xs {
-    font-size: 0.75rem;
-  }
-
-  .xs\:bg-red-500 {
-    background-color: #ef4444;
-  }
-}
 
 html {
   scroll-behavior: smooth;
