@@ -46,6 +46,16 @@ function ServiceEP() {
     window.scrollTo({ top: 0 });
   };
 
+  const imageSrcs = [
+    "ep1.jpg",
+    "ep2.jpg",
+    "ep3.jpg",
+    "ep5.jpg"
+  ];
+  
+  const imageStyles = "brightness-75 max-w-none object-cover lg:h-[500px] md:h-[400px] xs:h-[270px] rounded-2xl";
+  
+
   return (
     <div className="bg-gradient-to-t from-[#dfe9f3] to-white ">
       <Header />
@@ -84,18 +94,18 @@ function ServiceEP() {
 
       {/* Add a unique key to force rerender */}
       <div className="flex gap-1 w-full overflow-hidden" data-aos="zoom-in-down" key={animationKey}>
-        <div className="relative flex gap-1 z-0 animate-loop-scroll">
-          <img src="ep1.jpg" alt="RPEP" className="brightness-75 max-w-none object-cover lg:h-[500px] md:h-[400px] xs:h-[270px] rounded-2xl" />
-          <img src="ep2.jpg" alt="RPEP" className="brightness-75 max-w-none object-cover lg:h-[500px] md:h-[400px] xs:h-[270px] rounded-2xl" />
-          <img src="ep3.jpg" alt="RPEP" className="brightness-75 max-w-none object-cover lg:h-[500px] md:h-[400px] xs:h-[270px] rounded-2xl" />
-          <img src="ep5.jpg" alt="RPEP" className="brightness-75 max-w-none object-cover lg:h-[500px] md:h-[400px] xs:h-[270px] rounded-2xl" />
-        </div>
-        <div className="relative flex gap-1 z-0 animate-loop-scroll">
-          <img src="ep1.jpg" alt="RPEP" className="brightness-75 max-w-none object-cover lg:h-[500px] md:h-[400px] xs:h-[270px] rounded-2xl" />
-          <img src="ep2.jpg" alt="RPEP" className="brightness-75 max-w-none object-cover lg:h-[500px] md:h-[400px] xs:h-[270px] rounded-2xl" />
-          <img src="ep3.jpg" alt="RPEP" className="brightness-75 max-w-none object-cover lg:h-[500px] md:h-[400px] xs:h-[270px] rounded-2xl" />
-          <img src="ep5.jpg" alt="RPEP" className="brightness-75 max-w-none object-cover lg:h-[500px] md:h-[400px] xs:h-[270px] rounded-2xl" />
-        </div>
+        {[...Array(2)].map((_, index) => (
+          <div className="relative flex gap-1 z-0 animate-loop-scroll" key={index}>
+            {imageSrcs.map((src, i) => (
+              <img
+                key={i}
+                src={src}
+                alt={`RPEP-${i}`}
+                className={imageStyles}
+              />
+            ))}
+          </div>
+        ))}
       </div>
       <div className='bg-[linear-gradient(-225deg,_#CBBACC_0%,_#2580B3_100%)] rounded-t-2xl mt-10 text-white p-4 pt-15'>
         <h1 className='text-center md:text-[35px] xs:text-[26px] font-bold outline md:w-[40%] xs:w-[90%] m-auto font-roboto' data-aos="fade-down" >Tambien Se Parte De Nuestro Grupo De Jovenes!</h1>
