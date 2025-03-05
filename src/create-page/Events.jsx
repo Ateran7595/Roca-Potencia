@@ -143,7 +143,7 @@ const handleSubmitEvent = async (e) => {
                           />
                           {image && (
                             <section>
-                              <img src={URL.createObjectURL(image)} alt="Preview" className="w-[400px] mt-4" />
+                              <img src={URL.createObjectURL(image)} alt="Preview" className="w-[400px] mt-4 border-solid" />
                               <ul>
                                 <li>Name: {image.name}</li>
                                 <li>Type: {image.type}</li>
@@ -152,16 +152,16 @@ const handleSubmitEvent = async (e) => {
                             </section>
                             )}
                             <label htmlFor="eventName">Nombre del Evento</label>
-                            <Input id="eventName" type="text" placeholder="Ej. Reunión Juvenil" required />
+                            <Input id="eventName" type="text" placeholder="Ej. Reunión Juvenil" className={'border-solid'} required />
 
                             <label htmlFor="eventName">Localizacion</label>
-                            <Input id="eventLocation" type="text" placeholder="eg. Juarez" required />
+                            <Input id="eventLocation" type="text" placeholder="eg. Juarez" className={'border-solid'} required />
 
                             <label htmlFor="eventDate">Fecha del Evento</label>
-                            <Input id="eventDate" type="date" required />
+                            <Input id="eventDate" type="date" className={'border-solid'} required />
 
                             <label htmlFor="eventDescription">Descripción</label>
-                            <textarea id="eventDescription" placeholder="Detalles sobre el evento..." required></textarea>
+                            <textarea id="eventDescription" placeholder="Detalles sobre el evento..." className={'border-solid'} required></textarea>
                           <Button type="submit" className="mt-4 bg-gray-500 text-white font-bold">Publicar</Button>
                         </form>
                       </DialogDescription>
