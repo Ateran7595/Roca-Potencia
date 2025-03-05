@@ -45,17 +45,6 @@ function ServiceJZ() {
     window.scrollTo({ top: 0 });
   };
 
-  const imageSrcs = [
-    "jz3.jpg",
-    "roca2.jpg",
-    "jz8.jpg",
-    "jz12.jpg",
-    "jz7.jpg"
-  ];
-  
-  const imageStyles = "brightness-75 max-w-none object-cover lg:h-[500px] md:h-[400px] xs:h-[270px] rounded-2xl";
-  
-
   return (
     <div>
         <Header  />
@@ -88,19 +77,22 @@ function ServiceJZ() {
 
       {/* Add a unique key to force rerender */}
       <div className="flex gap-1 w-full overflow-hidden" data-aos="zoom-in-down" key={animationKey}>
-    {[...Array(2)].map((_, index) => (
-      <div className="relative flex gap-1 z-0 animate-loop-scroll" key={index}>
-        {imageSrcs.map((src, i) => (
-          <img
-            key={i}
-            src={src}
-            alt={`RPJuarez-${i}`}
-            className={imageStyles}
-          />
-        ))}
+        <div className="relative flex gap-1 z-0 animate-loop-scroll">
+          <img src="jz3.jpg" alt="RPJuarez" className="brightness-75 max-w-none object-cover lg:h-[500px] md:h-[400px] xs:h-[270px] rounded-2xl" />
+          <img src="roca2.jpg" alt="RPJuarez" className="brightness-75 max-w-none object-cover lg:h-[500px] md:h-[400px] xs:h-[270px] rounded-2xl" />
+          <img src="jz8.jpg" alt="RPJuarez" className="brightness-75 max-w-none object-cover lg:h-[500px] md:h-[400px] xs:h-[270px] rounded-2xl" />
+          <img src="jz12.jpg" alt="RPJuarez" className="brightness-75 max-w-none object-cover lg:h-[500px] md:h-[400px] xs:h-[270px] rounded-2xl" />
+          <img src="jz7.jpg" alt="RPJuarez" className="brightness-75 max-w-none object-cover lg:h-[500px] md:h-[400px] xs:h-[270px] rounded-2xl" />
+          
+        </div>
+        <div className="relative flex gap-1 z-0 animate-loop-scroll">
+          <img src="jz3.jpg" alt="RPJuarez" className="brightness-75 max-w-none object-cover lg:h-[500px] md:h-[400px] xs:h-[270px] rounded-2xl" />
+          <img src="roca2.jpg" alt="RPJuarez" className="brightness-75 max-w-none object-cover lg:h-[500px] md:h-[400px] xs:h-[270px] rounded-2xl" />
+          <img src="jz8.jpg" alt="RPJuarez" className="brightness-75 max-w-none object-cover lg:h-[500px] md:h-[400px] xs:h-[270px] rounded-2xl" />
+          <img src="jz12.jpg" alt="RPJuarez" className="brightness-75 max-w-none object-cover lg:h-[500px] md:h-[400px] xs:h-[270px] rounded-2xl" />
+          <img src="jz7.jpg" alt="RPJuarez" className="brightness-75 max-w-none object-cover lg:h-[500px] md:h-[400px] xs:h-[270px] rounded-2xl" />
+        </div>
       </div>
-    ))}
-  </div>
       <div className='bg-[linear-gradient(-20deg,_#fc6076_0%,_#ff9a44_100%)] rounded-t-2xl mt-10 text-white p-4 pt-15'>
         <h1 className='text-center md:text-[35px] xs:text-[26px] font-bold outline md:w-[40%] xs:w-[90%] m-auto font-roboto'data-aos="fade-down" >Tambien Se Parte De Nuestro Grupo De Jovenes!</h1>
         <div>

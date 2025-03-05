@@ -34,18 +34,18 @@ function Header() {
         {/* Conditionally render the "Servicios" button only on the landing page */}
         {isLandingPage && (
           <a href="#service">
-            <Button className="text-white shadow-2xl text-[22px] font-bold sm:w-[150px] sm:h-[50px] xs:w-[137px] xs:h-[37px] rounded-[100px] border-3 border-white cursor-pointer transition-transform hover:scale-105 hover:opacity-70">
+            <Button className="text-white shadow-2xl text-[22px] font-bold sm:w-[150px] sm:h-[50px] xs:w-[137px] xs:h-[37px] rounded-[100px] border-2 border-solid border-white cursor-pointer transition-transform hover:scale-105 hover:opacity-70">
               Servicios
             </Button>
           </a>
         )}
         <a href="/eventos">
-          <Button className="text-white shadow-2xl text-[22px] font-bold sm:w-[150px] sm:h-[50px] xs:w-[137px] xs:h-[37px] rounded-[100px] border-3 border-white cursor-pointer transition-transform hover:scale-105 hover:opacity-70">
+          <Button className="text-white shadow-2xl text-[22px] font-bold sm:w-[150px] sm:h-[50px] xs:w-[137px] xs:h-[37px] rounded-[100px] border-2 border-solid border-white cursor-pointer transition-transform hover:scale-105 hover:opacity-70">
             Eventos
           </Button>
         </a>
         <a href="/acerca">
-          <Button className="text-white shadow-2xl text-[22px] font-bold sm:w-[150px] sm:h-[50px] xs:w-[137px] xs:h-[37px] rounded-[100px] border-3 border-white cursor-pointer transition-transform hover:scale-105 hover:opacity-70">
+          <Button className="text-white shadow-2xl text-[22px] font-bold sm:w-[150px] sm:h-[50px] xs:w-[137px] xs:h-[37px] rounded-[100px] border-2 border-solid border-white cursor-pointer transition-transform hover:scale-105 hover:opacity-70">
             Acerca
           </Button>
         </a>

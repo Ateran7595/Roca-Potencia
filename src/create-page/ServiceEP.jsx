@@ -47,14 +47,14 @@ function ServiceEP() {
   };
 
   const imageSrcs = [
-    "ep1.jpg",
-    "ep2.jpg",
-    "ep3.jpg",
-    "ep5.jpg"
-  ];
-  
-  const imageStyles = "brightness-75 max-w-none object-cover lg:h-[500px] md:h-[400px] xs:h-[270px] rounded-2xl";
-  
+  "ep1.jpg",
+  "ep2.jpg",
+  "ep3.jpg",
+  "ep5.jpg"
+];
+
+const imageStyles = "brightness-75 max-w-none object-cover lg:h-[500px] md:h-[400px] xs:h-[270px] rounded-2xl";
+
 
   return (
     <div className="bg-gradient-to-t from-[#dfe9f3] to-white ">
