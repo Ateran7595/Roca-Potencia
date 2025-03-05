@@ -72,8 +72,12 @@ function EventFetcher({ refresh, isAdmin }) {
                         </CarouselItem>
                     ))}
                 </CarouselContent>
-                <CarouselPrevious />
-                <CarouselNext />
+ 
+        {/* Wrapper for navigation buttons with responsive visibility */}
+        <div className="hidden md:flex">
+            <CarouselPrevious />
+            <CarouselNext />
+        </div>
             </Carousel>
         </div>
     );

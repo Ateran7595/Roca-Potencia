@@ -44,6 +44,7 @@ const LoginForm = ({ onSuccess, onError, showLogin, setShowLogin }) => {
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            className={'border-solid'}
             required
           />
           <Input
@@ -51,6 +52,7 @@ const LoginForm = ({ onSuccess, onError, showLogin, setShowLogin }) => {
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            className={'border-solid'}
             required
           />
           <Button type="submit" className="bg-blue-600 text-white">Iniciar Sesion</Button>
