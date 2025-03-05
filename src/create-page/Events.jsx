@@ -129,7 +129,7 @@ const handleSubmitEvent = async (e) => {
               
               {/* Functions to open dialog and add img's once the user is logged in */}
               <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-                  <DialogContent className="p-6 bg-white">
+                  <DialogContent className="p-6 bg-white max-h-screen overflow-y-auto">
                     <DialogHeader>
                       <DialogTitle>Agregar Evento</DialogTitle>
                       <DialogDescription>
