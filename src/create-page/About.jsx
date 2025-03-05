@@ -29,7 +29,7 @@ function About() {
                     <img src="/aboutRP.jpg" alt="roca5" className="w-[1300px] lg:h-[875px] md:rounded-[50px] sm:rounded-[30px] xs:rounded-[20px] brightness-70 relative md:top-[150px] sm:top-[100px] xs:top-[60px] object-cover" />
                     <div className="absolute text-white lg:bottom-[610px] md:bottom-[395px] sm:bottom-[370px] xs:bottom-[195px] text-center" >
                         <h1 className="font-semibold lg:text-[100px] md:text-[70px] sm:text-[50px] xs:text-[35px]" data-aos="fade-down">Nuestra Vision</h1>
-                        <p className="lg:text-[36px] md:text-[25px] sm:text-[20px] font-semibold outline">Viviendo Plenamente En Dios</p>
+                        <p className="lg:text-[36px] md:text-[25px] sm:text-[20px] font-semibold border-solid border-2">Viviendo Plenamente En Dios</p>
                     </div>
                 </div>
             </div>

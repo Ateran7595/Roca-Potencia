@@ -94,7 +94,7 @@ const handleSubmitEvent = async (e) => {
             <img src="/roca5.jpg" alt="roca5" className="w-[1300px] md:rounded-[50px] sm:rounded-[30px] xs:rounded-[20px] brightness-70 relative md:top-[150px] sm:top-[100px] xs:top-[60px] object-cover" data-aos="fade-up" />
             <div className="absolute text-white lg:bottom-[610px] md:bottom-[260px] sm:bottom-[240px] xs:bottom-[130px] text-center" data-aos="fade-down">
                 <h1 className="font-semibold lg:text-[100px] md:text-[70px] sm:text-[50px] xs:text-[35px]" data-aos="fade-down">Proximos Eventos</h1>
-                <p className="lg:text-[36px] md:text-[25px] sm:text-[20px] font-semibold outline">No Te Los Puedes Perder!</p>
+                <p className="lg:text-[36px] md:text-[25px] sm:text-[20px] font-semibold border-solid border-2">No Te Los Puedes Perder!</p>
             </div>
             </div>
         </div>
@@ -115,7 +115,7 @@ const handleSubmitEvent = async (e) => {
                   setShowLogin(true)
                 }
               }} 
-                    className={"text-[22px] font-bold h-[50px] rounded-[100px] border-2 border-black cursor-pointer transition-transform hover:scale-105 hover:opacity-40 shadow-2xl"} >Agregar/Eliminar Evento</Button>
+                    className={"text-[22px] font-bold h-[50px] rounded-[100px] border-2 border-solid border-black cursor-pointer transition-transform hover:scale-105 hover:opacity-40 shadow-2xl"} >Agregar/Eliminar Evento</Button>
 
             {/* Functions to show login information, but can only be used by admins */}
             {showLogin && !isAdmin && (

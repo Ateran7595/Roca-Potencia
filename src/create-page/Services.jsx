@@ -16,7 +16,7 @@ function Services() {
       <div className="xs:p-5">
         <a href="/serviceep">
           <div
-            className="flex lg:flex-row xs:flex-col justify-center items-center md:mt-10 xs:mt-4 p-3 cursor-pointer transition-transform hover:scale-105 hover:shadow-2xl hover:border-2 hover:border-white hover:rounded-2xl"
+            className="flex lg:flex-row xs:flex-col justify-center items-center md:mt-10 xs:mt-4 p-3 cursor-pointer transition-transform hover:scale-105 hover:shadow-2xl hover:border-2 hover:border-solid hover:border-white hover:rounded-2xl"
             data-aos="fade-right"
           >
             <div>
@@ -28,7 +28,7 @@ function Services() {
             </div>
             <div className="flex flex-col justify-center p-5 font-semibold lg:text-start xs:text-center">
               <h1 className="md:text-[45px] xs:text-[30px]">Roca & Potencia El Paso</h1>
-              <p className="md:text-[22px] xs:text-[18px] pl-1.5 outline">
+              <p className="md:text-[22px] xs:text-[18px] pl-1.5 border-solid border-2">
                 E Delta Dr, El Paso, TX 79901
                 <br />
                 <span className="flex items-center lg:justify-start xs:justify-center"><GiClick />Mas Informacion</span>
@@ -39,12 +39,12 @@ function Services() {
         
         <a href="/servicejz">
           <div
-            className="flex lg:flex-row xs:flex-col mt-10 p-3 cursor-pointer transition-transform hover:scale-105 hover:shadow-2xl hover:border-2 hover:border-white hover:rounded-2xl"
+            className="flex lg:flex-row xs:flex-col mt-10 p-3 cursor-pointer transition-transform hover:scale-105 hover:shadow-2xl hover:border-2 hover:border-solid hover:border-white hover:rounded-2xl"
             data-aos="fade-left"
           >
             <div className="flex flex-col justify-center p-5 font-semibold lg:text-end xs:text-center">
               <h1 className="md:text-[45px] xs:text-[30px]">Roca & Potencia Juarez</h1>
-              <p className="md:text-[22px] xs:text-[18px] pr-1.5 outline">
+              <p className="md:text-[22px] xs:text-[18px] pr-1.5 border-solid border-2">
               Av 5 de Febrero, 32240 Juárez, Chih., Mexico
                 <br />
                 <span className="flex items-center lg:justify-end xs:justify-center">Mas Informacion<GiClick /></span>
