@@ -1,7 +1,19 @@
 import { Button } from '@/components/ui/button';
 import { useLocation } from 'react-router-dom';
+import { IoMenu } from "react-icons/io5";
+
+import {
+  Sheet,
+  SheetContent,
+  SheetClose,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet"
+import { useMediaQuery } from 'react-responsive';
 
 function Header() {
+  const isSmallScreen = useMediaQuery({ maxWidth: 1024 });
   const location = useLocation(); // Get the current page URL
   const isLandingPage = location.pathname === '/'; // Check if we are on the landing page
   const isServicePageEP = location.pathname === '/serviceep';
@@ -31,25 +43,60 @@ function Header() {
         </div>
       </a>
       <div className='flex xs:flex-wrap justify-center gap-5' data-aos="fade-zoom-in">
-        {/* Conditionally render the "Servicios" button only on the landing page */}
-        {isLandingPage && (
-          <a href="#service">
+      {isSmallScreen ? (
+        <Sheet>
+          <SheetTrigger>
+              <Button className="flex justify-center items-center text-white shadow-2xl text-[22px] font-bold sm:w-[150px] sm:h-[50px] xs:w-[137px] xs:h-[37px] rounded-[100px] border-2 border-solid border-white cursor-pointer transition-transform hover:scale-105 hover:opacity-70">
+                <IoMenu />Menu
+              </Button>
+          </SheetTrigger>
+          <SheetContent className={`${headerBackground} font-roboto flex items-center gap-8`} >
+            <SheetHeader >
+              <SheetTitle className='text-center text-[30px] text-white'>Menu</SheetTitle>
+            </SheetHeader>
+            {isLandingPage && (
+              <a href="#service">
+                <SheetClose>
+                  <Button className="text-white shadow-2xl text-[22px] font-bold sm:w-[150px] sm:h-[50px] xs:w-[137px] xs:h-[37px] rounded-[100px] border-2 border-solid border-white cursor-pointer transition-transform hover:scale-105 hover:opacity-70">
+                    Servicios
+                  </Button>
+                </SheetClose> 
+              </a>
+            )}
+            <a href="/eventos">
+              <Button className="text-white shadow-2xl text-[22px] font-bold sm:w-[150px] sm:h-[50px] xs:w-[137px] xs:h-[37px] rounded-[100px] border-2 border-solid border-white cursor-pointer transition-transform hover:scale-105 hover:opacity-70">
+                Eventos
+              </Button>
+            </a>
+            <a href="/acerca">
+              <Button className="text-white shadow-2xl text-[22px] font-bold sm:w-[150px] sm:h-[50px] xs:w-[137px] xs:h-[37px] rounded-[100px] border-2 border-solid border-white cursor-pointer transition-transform hover:scale-105 hover:opacity-70">
+                Acerca
+              </Button>
+            </a>
+          </SheetContent>
+        </Sheet>
+      ) : 
+      (
+        <>
+          {isLandingPage && (
+            <a href="#service">
+              <Button className="text-white shadow-2xl text-[22px] font-bold sm:w-[150px] sm:h-[50px] xs:w-[137px] xs:h-[37px] rounded-[100px] border-2 border-solid border-white cursor-pointer transition-transform hover:scale-105 hover:opacity-70">
+                Servicios
+              </Button>
+            </a>
+          )}
+          <a href="/eventos">
             <Button className="text-white shadow-2xl text-[22px] font-bold sm:w-[150px] sm:h-[50px] xs:w-[137px] xs:h-[37px] rounded-[100px] border-2 border-solid border-white cursor-pointer transition-transform hover:scale-105 hover:opacity-70">
-              Servicios
+              Eventos
             </Button>
           </a>
-        )}
-        <a href="/eventos">
-          <Button className="text-white shadow-2xl text-[22px] font-bold sm:w-[150px] sm:h-[50px] xs:w-[137px] xs:h-[37px] rounded-[100px] border-2 border-solid border-white cursor-pointer transition-transform hover:scale-105 hover:opacity-70">
-            Eventos
-          </Button>
-        </a>
-        <a href="/acerca">
-          <Button className="text-white shadow-2xl text-[22px] font-bold sm:w-[150px] sm:h-[50px] xs:w-[137px] xs:h-[37px] rounded-[100px] border-2 border-solid border-white cursor-pointer transition-transform hover:scale-105 hover:opacity-70">
-            Acerca
-          </Button>
-        </a>
-
+          <a href="/acerca">
+            <Button className="text-white shadow-2xl text-[22px] font-bold sm:w-[150px] sm:h-[50px] xs:w-[137px] xs:h-[37px] rounded-[100px] border-2 border-solid border-white cursor-pointer transition-transform hover:scale-105 hover:opacity-70">
+              Acerca
+            </Button>
+          </a>
+        </>
+      )}
       </div>
     </div>
   );

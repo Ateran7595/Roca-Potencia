@@ -115,7 +115,7 @@ const handleSubmitEvent = async (e) => {
                   setShowLogin(true)
                 }
               }} 
-                    className={"text-[22px] font-bold h-[50px] rounded-[100px] border-2 border-solid border-black cursor-pointer transition-transform hover:scale-105 hover:opacity-40 shadow-2xl"} >Agregar/Eliminar Evento</Button>
+              className={"md:text-[18px] xs:text-[15px] font-bold h-[50px] rounded-[100px] border-2 border-solid border-black cursor-pointer transition-transform hover:scale-105 hover:opacity-40 shadow-2xl"} >Agregar/Eliminar Evento</Button>
 
             {/* Functions to show login information, but can only be used by admins */}
             {showLogin && !isAdmin && (
