@@ -36,7 +36,7 @@ function Hero() {
         </a>
       </div>
       <Services />
-      <div className="font-roboto text-center flex flex-col mt-6 pb-6" data-aos="fade-up">
+      <div className="font-roboto text-center flex flex-col mt-6 pb-6">
         <h1 className="text-[30px] font-semibold">Tambien Visitanos</h1>
         <div className="border-b-4 border-solid md:w-[40%] sm:w-[60%] xs:w-[75%] m-auto mt-2 mb-2"></div>
         <div className="flex justify-center gap-10">
