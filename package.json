@@ -15,10 +15,10 @@
     "@radix-ui/react-popover": "^1.1.6",
     "@radix-ui/react-slot": "^1.1.2",
     "@tailwindcss/vite": "^4.0.6",
+    "aos": "^2.3.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "date-fns": "^3.6.0",
-    "emailjs-com": "^3.2.0",
     "embla-carousel-autoplay": "^8.5.2",
     "embla-carousel-react": "^8.5.2",
     "firebase": "^11.4.0",
@@ -55,6 +55,6 @@
     "vite": "^6.1.0"
   },
   "engines": {
-    "node": "20"
+    "node": ">=20"
   }
 }
