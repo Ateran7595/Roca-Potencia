@@ -17,7 +17,7 @@ function Services() {
         <a href="/serviceep">
           <div
             className="flex lg:flex-row xs:flex-col justify-center items-center md:mt-10 xs:mt-4 p-3 cursor-pointer transition-transform hover:scale-105 hover:shadow-2xl hover:border-2 hover:border-solid hover:border-white hover:rounded-2xl"
-            data-aos="zoom-in"
+            // add animation
           >
             <div>
               <img
@@ -40,7 +40,8 @@ function Services() {
         <a href="/servicejz">
           <div
             className="flex lg:flex-row xs:flex-col mt-10 p-3 cursor-pointer transition-transform hover:scale-105 hover:shadow-2xl hover:border-2 hover:border-solid hover:border-white hover:rounded-2xl"
-            data-aos="zoom-in"
+            // add animation
+            
           >
             <div className="flex flex-col justify-center p-5 font-semibold lg:text-end xs:text-center">
               <h1 className="md:text-[45px] xs:text-[30px]">Roca & Potencia Juarez</h1>

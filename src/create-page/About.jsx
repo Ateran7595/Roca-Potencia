@@ -34,7 +34,7 @@ function About() {
                 </div>
             </div>
 
-            <div className="flex lg:flex-row xs:flex-col justify-center items-center lg:mt-[250px] md:mt-[180px] sm:mt-[120px] xs:mt-[80px] w-[80%] m-auto gap-15 mb-20" data-aos="zoom-in">
+            <div className="flex lg:flex-row xs:flex-col justify-center items-center lg:mt-[250px] md:mt-[180px] sm:mt-[120px] xs:mt-[80px] w-[80%] m-auto gap-15 mb-20">
                 <div className="overflow-hidden pt-20">
                     <img
                         src={images[currentI]}
