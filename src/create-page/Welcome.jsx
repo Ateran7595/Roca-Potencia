@@ -15,12 +15,32 @@ function Welcome() {
                 </div>
             </div>
         </div>
-        <div>
+        <div className="md:mt-[200px] sm:mt-[120px] xs:mt-[80px] lg:text-xl md:text-[18px] lg:w-[70%] xs:w-[80%] m-auto font-roboto text-center animate">
+            <div data-aos="fade-zoom-in"
+                data-aos-easing="ease-in-back"
+                data-aos-offset="0">
+            <h1 className="md:text-[40px] xs:text-[30px] font-bold">Llamado de Dios</h1>
+            <div className="border-b-4 border-solid md:w-[40%] sm:w-[60%] xs:w-[75%] m-auto mt-2 mb-2"></div>
+            <p>En la biblia Dios nos enseña que cuando volvemos a Él con un corazon sincero y lo buscamos, Él nos dejara
+                encontrarlo mientras haya tiempo. Su amor por ti es inagotable, y con paciencia te espara para restaurarte, sostenerte y guiarte. 
+                Sus puertas siempre estan abiertas para todos los que desean buscarlo. Y este dia Él nos anima a volver a Él con un corazon 
+                humilde. Dios, el unico que restaura con amor y gracia.</p>
+            <h2 className='mt-6 font-semibold'>"«Aun ahora», declara el Señor,
+                    «Vuelvan a Mí de todo corazón,
+                    Con ayuno, llanto y lamento.
+                    Rasguen su corazón y no sus vestidos».
+                    Vuelvan ahora al Señor su Dios,
+                    Porque Él es compasivo y clemente,
+                    Lento para la ira, abundante en misericordia,
+                    Y se arrepiente de infligir el mal."
+            </h2>
+            <h2 className='font-bold md:text-[18px] xs:text-[18px] mt-2'>Joel 2:12-13</h2>
+            </div>
             <a href="/">
-            <div className="mt-4 flex justify-center gap-5 md:mt-[200px] sm:mt-[120px] xs:mt-[80px] mb-[100px]" >
-                <Button className="text-[22px] font-bold h-[50px] rounded-[100px] border-2 border-solid border-black cursor-pointer transition-transform hover:scale-105 hover:opacity-40 shadow-2xl">Ir Al Inicio</Button>
-            </div>        
-            </a> 
+                <div className="mt-4 flex justify-center gap-5  mb-[100px]" >
+                    <Button className="md:text-[18px] xs:text-[15px] font-bold h-[50px] rounded-[100px] border-2 border-solid border-black cursor-pointer transition-transform hover:scale-105 hover:opacity-40 shadow-2xl">Explorar Más</Button>
+                </div>        
+            </a>
         </div>
     </div>
   )
