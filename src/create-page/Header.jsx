@@ -19,7 +19,8 @@ function Header() {
   const isServicePageEP = location.pathname === '/serviceep';
   const isServicePageJZ = location.pathname === '/servicejz';
   const isAboutPage = location.pathname === '/acerca';
-  const isEventPage = location.pathname === '/eventos'
+  const isEventPage = location.pathname === '/eventos';
+  const isWelcomePage = location.pathname === '/bienvenida';
 
   const headerBackground = isLandingPage
   ? 'bg-[linear-gradient(-20deg,#616161_0%,#9bc5c3_100%)]'
@@ -31,6 +32,8 @@ function Header() {
   ? "bg-[linear-gradient(120deg,_#5ee6a8_0%,_#66b8e4_100%)]"
   : isEventPage
   ? 'bg-[linear-gradient(120deg,_#c79af0_0%,_#6aa8f0_100%)]'
+  : isWelcomePage
+  ? "bg-[linear-gradient(to_top,#a3bded_0%,#6991c7_100%)]"
   : 'bg-gray-800'
   
 

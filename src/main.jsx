@@ -8,6 +8,7 @@ import ServiceJZ from './create-page/ServiceJZ'
 import ServiceEP from './create-page/ServiceEP'
 import About from './create-page/About'
 import Events from './create-page/Events'
+import Welcome from './create-page/Welcome'
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
   {
     path:'/eventos',
     element: <Events />
+  },
+  {
+    path:'/bienvenida',
+    element: <Welcome />
   }
 ])
 
