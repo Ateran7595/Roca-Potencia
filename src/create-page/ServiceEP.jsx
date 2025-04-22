@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 
 function ServiceEP() {
-  const images = ['/ep6.jpg','/ep7.jpg','/jovenesEP1.JPG', '/jovenesEP2.JPG', '/EPJ3.jpg']
+  const images = ['/ep6.jpg','/ep7.jpg','/jovenesEP1.JPG', '/jovenesEP2.JPG']
 
   const [currentI, setCurrentI] = useState(0)
   const [fade, setFade] = useState(false)
