@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 
 function ServiceEP() {
-  const images = ['/ep6.jpg','/ep7.jpg','/EPJ.jpg', '/EPJ2.jpg', '/EPJ3.jpg']
+  const images = ['/ep6.jpg','/ep7.jpg','/jovenesEP1.JPG', '/jovenesEP2.JPG', '/EPJ3.jpg']
 
   const [currentI, setCurrentI] = useState(0)
   const [fade, setFade] = useState(false)
@@ -50,7 +50,9 @@ function ServiceEP() {
   "ep1.jpg",
   "ep2.jpg",
   "ep3.jpg",
-  "ep5.jpg"
+  "ep5.jpg",
+  "rocakids.JPG",
+  "rocakids2.JPG"
 ];
 
 const imageStyles = "brightness-75 max-w-none object-cover lg:h-[500px] md:h-[400px] xs:h-[270px] rounded-2xl";
