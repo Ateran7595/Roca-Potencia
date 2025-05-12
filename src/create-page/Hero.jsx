@@ -21,7 +21,7 @@ function Hero() {
             data-aos-easing="ease-in-back"
             data-aos-offset="0">
           <h1 className="md:text-[40px] xs:text-[30px] font-bold">¡Bienvenidos!</h1>
-          <div className="border-b-4 border-solid md:w-[40%] sm:w-[60%] xs:w-[75%] m-auto mt-2 mb-2"></div>
+          <div className="border-b-3 border-solid md:w-[40%] sm:w-[60%] xs:w-[75%] m-auto mt-2 mb-2"></div>
           <p>Te invitamos a ser parte de nuestra comunidad y a fortalecer tu fe con nosotros.</p>
           <h2>"Cuando las fuerzas fallan, Él sostiene.  
               Cuando el camino se nubla, Él ilumina.  

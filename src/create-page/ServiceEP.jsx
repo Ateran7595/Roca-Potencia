@@ -83,15 +83,17 @@ const imageStyles = "brightness-75 max-w-none object-cover lg:h-[500px] md:h-[40
           </a>
         </div>
         <div className="md:text-[30px] xs:text-[22px] mt-15" data-aos="zoom-in-down">
-          <div className="border-2 border-solid rounded-xl lg:w-[40%] m-auto mt-2 mb-2">
+          <div className="lg:w-[40%] m-auto mt-2 mb-2">
             <h1 className="md:text-[40px] xs:text-[26px] font-bold">Escuela Dominical Todas Edades</h1>
           </div>
+          <div className="border-b-3 border-solid md:w-[40%] sm:w-[60%] xs:w-[75%] m-auto mt-2 mb-2"></div>
           <p>Domingos: 9am - 10:30am</p>
         </div>
       </div>
 
-      <div className='mt-15 mb-4 lg:w-[30%] xs:w-[90%] m-auto border-solid border-2 rounded-xl' data-aos="fade-down">
+      <div className='mt-15 mb-4 lg:w-[30%] xs:w-[90%] m-auto border-solid border-2 rounded-md' data-aos="fade-down">
         <h1 className='lg:text-[30px] xs:text-[26px] font-bold font-roboto text-center shadow-2xl'>Clases Para Niños Desde Edades 3-10+</h1>
+        
       </div>
 
       {/* Add a unique key to force rerender */}

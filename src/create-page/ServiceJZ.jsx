@@ -71,7 +71,7 @@ function ServiceJZ() {
         </div>
       </div>
 
-      <div className='mt-15 mb-4 lg:w-[30%] xs:w-[90%] m-auto border-solid border-2 rounded-xl' data-aos="fade-down">
+      <div className='mt-15 mb-4 lg:w-[30%] xs:w-[90%] m-auto border-solid border-2 rounded-md' data-aos="fade-down">
         <h1 className='lg:text-[30px] xs:text-[26px] font-bold font-roboto text-center shadow-2xl'>Clases Para Niños Desde Edades 3-10+</h1>
       </div>
 
