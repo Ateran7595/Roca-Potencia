@@ -79,7 +79,7 @@ const imageStyles = "brightness-75 max-w-none object-cover lg:h-[500px] md:h-[40
           <p>Domingos: 11:00am - 1:30pm</p>
           <p>Viernes: 7pm - 9pm</p>
           <a href="https://www.google.com/maps/place/Templo+La+Potenica+De+Dios/@31.7271681,-106.4935073,14z/data=!4m6!3m5!1s0x86e75904d111d355:0x88355d21d23276b9!8m2!3d31.7573792!4d-106.4793629!16s%2Fg%2F11c1sk1w8n?entry=ttu&g_ep=EgoyMDI1MDIxOC4wIKXMDSoJLDEwMjExNDU1SAFQAw%3D%3D" target='_blank'>
-            <Button className="text-[22px] mt-3 font-bold h-[50px] rounded-[100px] border-2 border-solid border-black cursor-pointer transition-transform hover:scale-105 hover:opacity-40 shadow-2xl" >Mapa</Button>
+            <Button className="mt-3 md:text-[18px] xs:text-[15px] font-bold h-[50px] rounded-[100px] border-2 border-solid border-black cursor-pointer transition-transform hover:scale-105 hover:opacity-40 shadow-2xl" >Mapa</Button>
           </a>
         </div>
         <div className="md:text-[30px] xs:text-[22px] mt-15" data-aos="zoom-in-down">
@@ -140,7 +140,7 @@ const imageStyles = "brightness-75 max-w-none object-cover lg:h-[500px] md:h-[40
           <h1 className="md:text-[40px] xs:text-[28px] font-bold ">No Te Pierdas Ninguno De Nuestros Eventos!</h1>
           <div className="border-b-3 border-solid w-[55%] m-auto mt-2 mb-5"></div>
           <a href="/eventos">
-            <Button className="mb-10 text-white shadow-2xl text-[30px] font-bold h-[50px] rounded-[100px] border-3 border-solid border-white cursor-pointer transition-transform hover:scale-105 hover:opacity-70">
+            <Button className="mb-10 text-white border-solid border-white md:text-[18px] xs:text-[15px] font-bold h-[50px] rounded-[100px] border-2  cursor-pointer transition-transform hover:scale-105 hover:opacity-40 shadow-2xl">
               Proximos Eventos
             </Button>          
           </a>

@@ -66,7 +66,7 @@ function ServiceJZ() {
           <p>Domingos: 2:30pm - 4:30pm</p>
           <p>Jueves: 6pm - 8pm</p>
           <a href="https://www.google.com/maps/place/Iglesia+Roca+y+Potencia+Ciudad+Ju%C3%A1rez/@31.7247692,-106.4833243,19z/data=!4m14!1m7!3m6!1s0x86e75904d111d355:0x88355d21d23276b9!2sTemplo+La+Potenica+De+Dios!8m2!3d31.7573792!4d-106.4793629!16s%2Fg%2F11c1sk1w8n!3m5!1s0x86e759d8d7dafc5d:0xbc7e51fe5e12bcfd!8m2!3d31.7244694!4d-106.4826614!16s%2Fg%2F11hdcgrv4m?entry=ttu&g_ep=EgoyMDI1MDIxOS4xIKXMDSoJLDEwMjExNDU1SAFQAw%3D%3D" target='_blank'>
-            <Button className="text-[22px] mt-3 font-bold h-[50px] rounded-[100px] border-2 border-solid border-black cursor-pointer transition-transform hover:scale-105 hover:opacity-40 shadow-2xl" >Mapa</Button>
+            <Button className="mt-3 md:text-[18px] xs:text-[15px] font-bold h-[50px] rounded-[100px] border-2 border-solid border-black cursor-pointer transition-transform hover:scale-105 hover:opacity-40 shadow-2xl" >Mapa</Button>
           </a>
         </div>
       </div>
@@ -120,7 +120,7 @@ function ServiceJZ() {
           <h1 className="md:text-[40px] xs:text-[28px] font-bold ">Visita Nuestros Proximos Eventos!</h1>
           <div className="border-b-3 border-solid md:w-[40%] sm:w-[60%] xs:w-[75%] m-auto mt-2 mb-2"></div>
           <a href="/eventos">
-            <Button className="mb-10 text-white shadow-2xl text-[30px] font-bold h-[50px] rounded-[100px] border-3 border-solid border-white cursor-pointer transition-transform hover:scale-105 hover:opacity-70">
+            <Button className="mb-10 text-white border-solid border-white md:text-[18px] xs:text-[15px] font-bold h-[50px] rounded-[100px] border-2  cursor-pointer transition-transform hover:scale-105 hover:opacity-40 shadow-2xl">
               Proximos Eventos
             </Button>          
           </a>
