@@ -55,7 +55,14 @@ function Header() {
                 <IoMenu />Menu
               </Button>
           </SheetTrigger>
-          <SheetContent className={`${headerBackground} flex items-center gap-8`} >
+          <SheetContent  side="right"
+  className={`
+    ${headerBackground}
+    flex flex-col items-center gap-8
+    transform transition-all duration-700 ease-in-out
+    data-[state=open]:translate-x-0 data-[state=open]:opacity-100
+    data-[state=closed]:translate-x-full data-[state=closed]:opacity-0
+  `} >
             <SheetHeader >
               <SheetTitle className='text-center text-[30px] text-white'>Menu</SheetTitle>
             </SheetHeader>
