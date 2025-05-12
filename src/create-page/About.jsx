@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import Header from "./Header"
+import PageWrapper from "./PageWrapper"
 
 function About() {
     const images = ['/roca3.jpg','/jz13.jpg','/jz10.jpg']
@@ -22,8 +22,8 @@ function About() {
     }, [images.length])
 
     return (
+        <PageWrapper>
         <div>
-            <Header />
             <div className="bg-[linear-gradient(120deg,_#66b8e4_0%,_#5ee6a8_100%)] flex flex-col items-center justify-center w-full p-5 lg:h-[900px] relative">
                 <div className="relative w-full flex items-center justify-center" data-aos="fade-up">
                     <img src="/aboutRP.jpg" alt="roca5" className="w-[1300px] lg:h-[875px] md:rounded-[50px] sm:rounded-[30px] xs:rounded-[20px] brightness-70 relative md:top-[150px] sm:top-[100px] xs:top-[60px] object-cover" />
@@ -42,7 +42,7 @@ function About() {
                         className={`md:w-[400px] xs:w-[300px] md:h-[500px] xs:h-[400px] object-cover transition-opacity duration-700 ease-in-out shadow-xl rounded-2xl ${fade ? 'opacity-0' : 'opacity-100'}`}
                     />
                 </div>
-                <div className="lg:w-[50%] flex flex-col gap-4 font-roboto text-[23px] lg:text-start lg:text-[22px] xs:text-[18px]" >
+                <div className="lg:w-[50%] flex flex-col gap-4 text-[23px] lg:text-start lg:text-[22px] xs:text-[18px]" >
                     <h1 className="md:text-[40px] xs:text-[30px] font-semibold">Nuestra Vision</h1>
                     <p>Como siervos de Dios, nuestra misión es servir y ayudar a quienes más lo necesitan, guiándonos siempre por la Palabra de Dios. Nos esforzamos por preparar una generación de niños, jóvenes y adultos que no solo conozcan el Evangelio, sino que también lo proclamen con valentía en sus escuelas, trabajos y hogares, llevando luz a donde más se necesita.</p>
                     <p>Creemos firmemente que entregar nuestra vida a Cristo y vivir plenamente en Él no solo nos lleva a una vida victoriosa, sino a una vida <b>más que victoriosa.</b> Porque sabemos que con Cristo, <b>todo es posible!</b></p>
@@ -51,6 +51,7 @@ function About() {
                 </div>
             </div>
         </div>
+        </PageWrapper>
     )
 }
 

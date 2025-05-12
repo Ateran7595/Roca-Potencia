@@ -6,7 +6,7 @@ function Services() {
   return (
     <div
       id="service"
-      className="font-roboto flex flex-col justify-center items-center mt-[80px] md:pb-[100px] xs:pb-[50px] text-white bg-[linear-gradient(-20deg,#616161_0%,#9bc5c3_100%)] rounded-t-4xl rounded-b-4xl"
+      className=" flex flex-col justify-center items-center mt-[80px] md:pb-[100px] xs:pb-[50px] text-white bg-[linear-gradient(-20deg,#616161_0%,#9bc5c3_100%)] rounded-t-4xl rounded-b-4xl"
     >
       <h1 className="md:text-[40px] sm:text-[30px] xs:text-[25px] font-bold pt-5 text-center">
         Una Iglesia

@@ -2,10 +2,12 @@ import { Button } from "@/components/ui/button"
 import Services from "./Services"
 import { FaFacebook } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
+import PageWrapper from "./PageWrapper";
 
 function Hero() {
 
   return (
+    <PageWrapper>
     <div className="bg-gradient-to-t from-[#dfe9f3] to-white ">
       <div className="bg-[linear-gradient(-20deg,#616161_0%,#9bc5c3_100%)] flex flex-col items-center justify-center w-full p-5 lg:h-[900px] relative">
         <div className="relative w-full flex items-center justify-center">
@@ -16,7 +18,7 @@ function Hero() {
           </div>
         </div>
       </div>
-      <div className="md:mt-[200px] sm:mt-[120px] xs:mt-[80px] lg:text-xl md:text-[18px] lg:w-full xs:w-[90%] m-auto font-roboto text-center font-semibold animate">
+      <div className="md:mt-[200px] sm:mt-[120px] xs:mt-[80px] lg:text-xl md:text-[18px] lg:w-full xs:w-[90%] m-auto text-center font-semibold animate">
         <div data-aos="fade-zoom-in"
             data-aos-easing="ease-in-back"
             data-aos-offset="0">
@@ -36,7 +38,7 @@ function Hero() {
         </a>
       </div>
       <Services />
-      <div className="font-roboto text-center flex flex-col mt-6 pb-6">
+      <div className=" text-center flex flex-col mt-6 pb-6">
         <h1 className="text-[30px] font-semibold">Tambien Visitanos</h1>
         <div className="border-b-4 border-solid md:w-[40%] sm:w-[60%] xs:w-[75%] m-auto mt-2 mb-2"></div>
         <div className="flex justify-center gap-10">
@@ -45,6 +47,7 @@ function Hero() {
         </div>
       </div>
     </div>
+    </PageWrapper>
   ) 
 }
 

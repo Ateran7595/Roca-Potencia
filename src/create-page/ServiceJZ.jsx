@@ -1,9 +1,8 @@
 import { Button } from '@/components/ui/button'
-import Header from './Header'
 import { useEffect, useState } from 'react'
 import { FaInstagram } from "react-icons/fa";
 import { FaWhatsapp } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import PageWrapper from './PageWrapper';
 
 function ServiceJZ() {
   const images = ['/JZJ.jpg','/JZJ2.jpg','/JZJ3.jpg', '/JZJ4.jpg', '/JZJ5.jpg', '/JZJ6.jpg']
@@ -46,8 +45,8 @@ function ServiceJZ() {
   };
 
   return (
+    <PageWrapper>
     <div>
-        <Header  />
         <div className="bg-[linear-gradient(-20deg,_#fc6076_0%,_#ff9a44_100%)] flex flex-col items-center justify-center w-full p-5 lg:h-[900px] relative">
           <div className="relative w-full flex items-center justify-center">
             <img src="/roca4.jpg" alt="roca5" className="w-[1300px] md:rounded-[50px] sm:rounded-[30px] xs:rounded-[20px] brightness-70 relative md:top-[150px] sm:top-[100px] xs:top-[60px] object-cover" data-aos="fade-up" />
@@ -58,7 +57,7 @@ function ServiceJZ() {
           </div>
         </div>
 
-      <div className="md:mt-[200px] sm:mt-[120px] xs:mt-[80px] lg:text-xl md:text-[18px] lg:w-full xs:w-[90%] m-auto font-roboto text-center font-semibold animate ">
+      <div className="md:mt-[200px] sm:mt-[120px] xs:mt-[80px] lg:text-xl md:text-[18px] lg:w-full xs:w-[90%] m-auto  text-center font-semibold animate ">
         <div className="md:text-[30px] xs:text-[22px]" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-offset="0">
           <h1 className="md:text-[40px] xs:text-[28px] font-bold">Roca & Potencia Juarez, Chihuahua</h1>
           <div className="border-b-3 border-solid md:w-[40%] sm:w-[60%] xs:w-[75%] m-auto mt-2 mb-2"></div>
@@ -72,7 +71,7 @@ function ServiceJZ() {
       </div>
 
       <div className='mt-15 mb-4 lg:w-[30%] xs:w-[90%] m-auto border-solid border-2 rounded-md' data-aos="fade-down">
-        <h1 className='lg:text-[30px] xs:text-[26px] font-bold font-roboto text-center shadow-2xl'>Clases Para Niños Desde Edades 3-10+</h1>
+        <h1 className='lg:text-[30px] xs:text-[26px] font-bold text-center shadow-2xl'>Clases Para Niños Desde Edades 3-10+</h1>
       </div>
 
       {/* Add a unique key to force rerender */}
@@ -94,14 +93,14 @@ function ServiceJZ() {
         </div>
       </div>
       <div className='bg-[linear-gradient(-20deg,_#fc6076_0%,_#ff9a44_100%)] rounded-t-2xl mt-10 text-white p-4 pt-15'>
-        <h1 className='text-center md:text-[35px] xs:text-[26px] font-bold border-solid border-2 md:w-[40%] xs:w-[90%] m-auto font-roboto'data-aos="fade-down" >Tambien Se Parte De Nuestro Grupo De Jovenes!</h1>
+        <h1 className='text-center md:text-[35px] xs:text-[26px] font-bold border-solid border-2 md:w-[40%] xs:w-[90%] m-auto'data-aos="fade-down" >Tambien Se Parte De Nuestro Grupo De Jovenes!</h1>
         <div>
           <div className='m-auto flex justify-center mt-10 mb-8' data-aos="fade-down" >
             <img src={images[currentI]}
                  alt={`Slide ${currentI + 1}`} 
                  className={`rounded-2xl md:w-[850px] xs:w-[400px] md:h-[650px] xs:h-[270px] object-cover transition-opacity duration-700 ease-in-out shadow-xl ${fade ? 'opacity-0' : 'opacity-100'}`} />
           </div>
-          <div className="md:text-[30px] xs:text-[22px] font-bold text-center font-roboto" data-aos-easing="ease-in-back" data-aos-offset="0" data-aos="fade-zoom-in" >
+          <div className="md:text-[30px] xs:text-[22px] font-bold text-center" data-aos-easing="ease-in-back" data-aos-offset="0" data-aos="fade-zoom-in" >
             <h1 className="md:text-[40px] xs:text-[28px] font-bold">Roca & Potencia Youth</h1>
             <div className="border-b-3 border-solid md:w-[40%] sm:w-[60%] xs:w-[75%] m-auto mt-2 mb-2"></div>
             <p>Todos Los Lunes Via Zoom</p>
@@ -116,7 +115,7 @@ function ServiceJZ() {
         <div className='mt-10 mb-8' data-aos="fade-up" >
           <img src="/jzLunes.jpg" alt="zoom" className='flex justify-center items-center m-auto rounded-2xl w-[700px]' />
         </div>
-        <div className="md:text-[30px] xs:text-[22px] font-bold text-center font-roboto" data-aos="fade-down" >
+        <div className="md:text-[30px] xs:text-[22px] font-bold text-center" data-aos="fade-down" >
           <h1 className="md:text-[40px] xs:text-[28px] font-bold ">Visita Nuestros Proximos Eventos!</h1>
           <div className="border-b-3 border-solid md:w-[40%] sm:w-[60%] xs:w-[75%] m-auto mt-2 mb-2"></div>
           <a href="/eventos">
@@ -131,6 +130,7 @@ function ServiceJZ() {
         </div>
       </div>
     </div>
+    </PageWrapper>
   )
 }
 

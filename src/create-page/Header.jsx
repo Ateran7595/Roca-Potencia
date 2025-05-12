@@ -11,6 +11,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 import { useMediaQuery } from 'react-responsive';
+import PageWrapper from './PageWrapper';
 
 function Header() {
   const isSmallScreen = useMediaQuery({ maxWidth: 1024 });
@@ -38,7 +39,8 @@ function Header() {
   
 
   return (
-    <div className={`flex lg:flex-row xs:flex-col xs:gap-4 xs:flex-wrap justify-between items-center font-roboto ${headerBackground} p-6`}>
+    <PageWrapper>
+    <div className={`flex lg:flex-row xs:flex-col xs:gap-4 xs:flex-wrap justify-between items-center ${headerBackground} p-6`}>
       <a href="/">
         <div className='flex items-center gap-2 transition-transform hover:scale-105 cursor-pointer' data-aos="fade-zoom-in">
           <img src="/RPlogo.png" alt="logo" className='sm:w-[90px] sm:h-[90px] xs:w-[65px] xs:h-[65px]' />
@@ -53,7 +55,7 @@ function Header() {
                 <IoMenu />Menu
               </Button>
           </SheetTrigger>
-          <SheetContent className={`${headerBackground} font-roboto flex items-center gap-8`} >
+          <SheetContent className={`${headerBackground} flex items-center gap-8`} >
             <SheetHeader >
               <SheetTitle className='text-center text-[30px] text-white'>Menu</SheetTitle>
             </SheetHeader>
@@ -102,6 +104,7 @@ function Header() {
       )}
       </div>
     </div>
+    </PageWrapper>
   );
 }
 

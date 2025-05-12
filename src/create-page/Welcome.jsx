@@ -1,11 +1,12 @@
 import React from 'react'
 import Header from './Header'
 import { Button } from '@/components/ui/button'
+import PageWrapper from './PageWrapper'
 
 function Welcome() {
   return (
+    <PageWrapper>
     <div>
-        <Header />
         <div className="bg-[linear-gradient(to_top,#a3bded_0%,#6991c7_100%)] flex flex-col items-center justify-center w-full p-5 lg:h-[900px] relative">
             <div className="relative w-full flex flex-col items-center justify-center">
                 <img src="/test5.jpg" alt="roca5" className="w-[1300px] md:rounded-[50px] sm:rounded-[30px] xs:rounded-[20px] brightness-70 relative md:top-[150px] sm:top-[100px] xs:top-[60px] object-cover" data-aos="fade-up" />
@@ -15,7 +16,7 @@ function Welcome() {
                 </div>
             </div>
         </div>
-        <div className="md:mt-[200px] sm:mt-[120px] xs:mt-[80px] lg:text-xl md:text-[18px] lg:w-[70%] xs:w-[80%] m-auto font-roboto text-center animate"
+        <div className="md:mt-[200px] sm:mt-[120px] xs:mt-[80px] lg:text-xl md:text-[18px] lg:w-[70%] xs:w-[80%] m-auto text-center animate"
          data-aos="fade-zoom-in"
          data-aos-easing="ease-in-back"
          data-aos-offset="0"
@@ -45,6 +46,7 @@ function Welcome() {
             </a>
         </div>
     </div>
+    </PageWrapper>
   )
 }
 

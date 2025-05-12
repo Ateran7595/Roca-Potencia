@@ -42,7 +42,7 @@ function Newsletter() {
   };
 
   return (
-    <div className="flex flex-col gap-2 items-center p-4 rounded-lg md:w-[60%] xs:w-[95%] border-white border-solid border-2 mt-5 font-roboto">
+    <div className="flex flex-col gap-2 items-center p-4 rounded-lg md:w-[60%] xs:w-[95%] border-white border-solid border-2 mt-5">
       <Toaster />
       <h2 className="text-xl font-bold text-center text-white md:text-[35px] xs:text-[26px] ">Subscribete Para Recibir Informacion de Nuestros Proximos Eventos!</h2>
       <Input

@@ -1,5 +1,4 @@
 // import { DatePickerDemo } from "@/components/DatePickerDemo"
-import Header from "./Header"
 import { MdOutlineSwipe } from "react-icons/md";
 import { Input } from "@/components/ui/input"
 import { useState } from "react";
@@ -17,6 +16,7 @@ import { app } from "/firebase";
 import EventFetcher from "./EventFetcher";
 import Newsletter from "./Newsletter";
 import { sendEventEmailToSubscribers } from "./EmailsFetcher/FetchEmails";
+import PageWrapper from "./PageWrapper";
 
 function Events() {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -83,8 +83,8 @@ const handleSubmitEvent = async (e) => {
 };
 
   return (
+    <PageWrapper>
     <div>
-        <Header />
         <div className="bg-[linear-gradient(120deg,_#c79af0_0%,_#6aa8f0_100%)] flex flex-col items-center justify-center w-full p-5 lg:h-[900px] relative">
             <div className="relative w-full flex items-center justify-center">
             <img src="/test4.jpg" alt="roca5" className="w-[1300px] md:rounded-[50px] sm:rounded-[30px] xs:rounded-[20px] brightness-70 relative md:top-[150px] sm:top-[100px] xs:top-[60px] object-cover" data-aos="fade-up" />
@@ -94,8 +94,8 @@ const handleSubmitEvent = async (e) => {
             </div>
             </div>
         </div>
-        <div className="md:mt-[200px] sm:mt-[120px] xs:mt-[100px] lg:text-xl md:text-[18px] lg:w-full xs:w-[90%] m-auto font-roboto text-center font-semibold animate" >
-          <div className="font-roboto flex flex-col items-center">
+        <div className="md:mt-[200px] sm:mt-[120px] xs:mt-[100px] lg:text-xl md:text-[18px] lg:w-full xs:w-[90%] m-auto text-center font-semibold animate" >
+          <div className=" flex flex-col items-center">
             <h1 className="md:text-[40px] xs:text-[30px] font-bold">Echa Un Vistazo</h1>
             <p className="text-[40px] flex flex-col items-center"><MdOutlineSwipe /><span className="text-[15px]">Deslizar</span></p>
             <div>
@@ -170,6 +170,7 @@ const handleSubmitEvent = async (e) => {
           <Newsletter />
         </div>
     </div>
+    </PageWrapper>
   )
 }
 
