@@ -39,6 +39,8 @@ Vercel environment variables are not automatically available in a local checkout
 
 ## Design and bilingual content
 
+For dependency security repairs, the Firestore gRPC override, removed unused packages, and validation details, see [SECURITY_UPDATES.md](./SECURITY_UPDATES.md).
+
 See [DESIGN.md](./DESIGN.md) for the audit, reference links, design tokens, component architecture, preservation details, and validation results/limits.
 
 - Global tokens: `src/index.css`; layouts and responsive rules: `src/App.css`.
