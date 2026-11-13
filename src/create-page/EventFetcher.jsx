@@ -1,86 +1,97 @@
-import React, { useEffect, useState } from 'react';
-import {
-    Carousel,
-    CarouselContent,
-    CarouselItem,
-    CarouselNext,
-    CarouselPrevious,
-} from "@/components/ui/carousel";
-import { getDownloadURL, getStorage, listAll, ref, deleteObject } from 'firebase/storage';
-import { app } from '/firebase';
+import { useCallback, useEffect, useState } from "react";
+import { useLanguage } from "../i18n/context";
+import { PhotoCarousel } from "../components/SiteUI";
 
-function EventFetcher({ refresh, isAdmin }) {
-    const [images, setImages] = useState([]);
-    const [imageRefs, setImageRefs] = useState([]); // Stores references for deletion
-
-    // Fetch all img's within the images/ folder from firebase
-    const fetchFromStorage = async () => {
-        try {
-            const storage = getStorage(app);
-            const ListRef = ref(storage, "images/");
-
-            const res = await listAll(ListRef);
-
-            const urls = await Promise.all(
-                res.items.map(async (itemRef) => {
-                    const url = await getDownloadURL(itemRef);
-                    return { url, path: itemRef.fullPath }; // Store both URL and path
-                })
-            );
-
-            setImages(urls);
-            setImageRefs(res.items); // Store references for deleting
-        } catch (error) {
-            console.error('Error:', error);
-        }
-    };
-
-    useEffect(() => {
-        fetchFromStorage();
-    }, [refresh]);
-
-    // 🔥 DELETE FUNCTION 🔥
-    const handleDelete = async (imagePath) => {
-        try {
-            const storage = getStorage(app);
-            const imageRef = ref(storage, imagePath);
-
-            await deleteObject(imageRef); // Delete image from Firebase Storage
-            console.log('Image deleted successfully:', imagePath);
-
-            // Refresh the list after deletion
-            fetchFromStorage();
-        } catch (error) {
-            console.error('Error deleting image:', error);
-        }
-    };
-
+export default function EventFetcher({ refresh, isAdmin }) {
+  const { t } = useLanguage();
+  const [images, setImages] = useState([]);
+  const [status, setStatus] = useState("loading");
+  const [deleting, setDeleting] = useState("");
+  const fetchImages = useCallback(async () => {
+    setStatus("loading");
+    try {
+      const [{ storageRP }, { listAll, ref, getDownloadURL }] =
+        await Promise.all([
+          import("../../firebase"),
+          import("firebase/storage"),
+        ]);
+      const result = await listAll(ref(storageRP, "images/"));
+      const urls = await Promise.all(
+        result.items.map(async (item) => ({
+          url: await getDownloadURL(item),
+          path: item.fullPath,
+          name: item.name,
+        })),
+      );
+      setImages(urls);
+      setStatus("ready");
+    } catch {
+      setStatus("error");
+    }
+  }, []);
+  useEffect(() => {
+    fetchImages();
+  }, [fetchImages, refresh]);
+  const handleDelete = async (path) => {
+    if (!window.confirm(t("events.confirmDelete"))) return;
+    setDeleting(path);
+    try {
+      const [{ storageRP }, { ref, deleteObject }] = await Promise.all([
+        import("../../firebase"),
+        import("firebase/storage"),
+      ]);
+      await deleteObject(ref(storageRP, path));
+      await fetchImages();
+    } catch {
+      setStatus("error");
+    } finally {
+      setDeleting("");
+    }
+  };
+  if (status === "loading")
     return (
-        <div className='flex justify-center items-center flex-col'>
-            <Carousel className={'md:p-5 xs:pb-5 xs:pt-5 md:w-[70%]  m-auto'}>
-                <CarouselContent>
-                    {images.map((image, index) => (
-                        <CarouselItem key={index} className={'flex flex-col justify-center items-center'}>
-                            <img src={image.url} alt={`file-${index}`} className='rounded-2xl object-cover w-[700px]' />
-                            {isAdmin && (
-                                <button
-                                    onClick={() => handleDelete(image.path)}
-                                    className="mt-3 p-2 bg-red-500 text-white rounded-lg hover:bg-red-700 font-bold font-roboto"
-                                >
-                                Eliminar
-                                </button>)}
-                        </CarouselItem>
-                    ))}
-                </CarouselContent>
- 
-        {/* Wrapper for navigation buttons with responsive visibility */}
-        <div className="hidden md:flex">
-            <CarouselPrevious />
-            <CarouselNext />
-        </div>
-            </Carousel>
-        </div>
+      <div className="empty-state" role="status">
+        {t("common.loading")}
+      </div>
     );
+  if (status === "error")
+    return (
+      <div className="empty-state">
+        <p role="status">{t("events.error")}</p>
+        <button className="button button-secondary" onClick={fetchImages}>
+          {t("common.retry")}
+        </button>
+      </div>
+    );
+  if (!images.length) return <p className="empty-state">{t("events.empty")}</p>;
+  return (
+    <>
+      <div className="event-gallery">
+        <PhotoCarousel
+          images={images.map((image) => image.url)}
+          alt={t("events.heading")}
+          alts={images.map((image) => t("events.poster", { name: image.name }))}
+        />
+      </div>
+      <p className="small-copy">{t("events.original")}</p>
+      {isAdmin && (
+        <div className="event-admin-list">
+          {images.map((image) => (
+            <div key={image.path}>
+              <span>{image.name}</span>
+              <button
+                className="button button-danger"
+                disabled={Boolean(deleting)}
+                onClick={() => handleDelete(image.path)}
+              >
+                {t(
+                  deleting === image.path ? "common.loading" : "events.delete",
+                )}
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
+    </>
+  );
 }
-
-export default EventFetcher;

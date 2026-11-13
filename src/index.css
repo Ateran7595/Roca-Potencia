@@ -1,34 +1,98 @@
-@import 'tailwindcss';
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+﻿@import "tailwindcss";
 
-@custom-variant dark (&:is(.dark *));
-
-@theme {
-  --breakpoint-xs: 360px;
-  --font-roboto: "Roboto Slab", serif;
-
-  /* Custom keyframes */
-  @keyframes loop-scroll {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-100%);
-    }
-  }
+:root {
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: #202b29;
+  background: #faf9f6;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  --canvas: #faf9f6;
+  --surface: #ffffff;
+  --ink: #202b29;
+  --muted: #58635e;
+  --accent: #b9d4c5;
+  --accent-strong: #315d4b;
+  --border: #d9ded7;
+  --error: #a6312a;
+  --success: #246046;
+  --radius: 16px;
+  --container: 1280px;
+  --section: clamp(64px, 8vw, 112px);
+  --background: #ffffff;
+  --foreground: #202b29;
+  --shadow-soft: 0 10px 28px -16px rgb(32 43 41 / 24%);
 }
-
-/* Add custom utility classes */
-@layer utilities {
-  .animate-loop-scroll {
-    animation: loop-scroll 60s linear infinite;
-  }
+* {
+  box-sizing: border-box;
 }
-
-
+body {
+  margin: 0;
+  min-width: 320px;
+}
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 110px;
 }
-
+button,
+input,
+textarea {
+  font: inherit;
+}
+button,
+a,
+input,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+button,
+a {
+  touch-action: manipulation;
+}
+button {
+  cursor: pointer;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button {
+  color: inherit;
+}
+img,
+video {
+  display: block;
+  max-width: 100%;
+}
+figure,
+h1,
+h2,
+h3,
+p,
+blockquote {
+  margin: 0;
+}
+button:disabled {
+  cursor: wait;
+  opacity: 0.55;
+}
+:focus-visible {
+  outline: 3px solid #517daa;
+  outline-offset: 5px;
+}
+::selection {
+  background: #c1ddcd;
+  color: #17251f;
+}
+#main-content:focus {
+  outline: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation: none !important;
+    transition: none !important;
+  }
+}

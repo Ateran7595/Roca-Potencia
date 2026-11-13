@@ -1,62 +1,92 @@
 import { useState } from "react";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { getFirestore, collection, addDoc, query, where, getDocs } from "firebase/firestore";
-import { app } from "/firebase";
-import { Toaster } from "@/components/ui/sonner";
-import { toast } from "sonner";
+import { ArrowUpRight, Mail } from "lucide-react";
+import { useLanguage } from "../i18n/context";
 
-function Newsletter() {
+export default function Newsletter() {
+  const { t } = useLanguage();
   const [email, setEmail] = useState("");
-
-  const handleSubscribe = async () => {
-    if (!email || !email.includes('@')) {
-      toast("Por Favor Ingrese correo valido.")
+  const [status, setStatus] = useState("");
+  const [busy, setBusy] = useState(false);
+  const handleSubscribe = async (event) => {
+    event.preventDefault();
+    if (busy) return;
+    const value = email.trim().toLowerCase();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+      setStatus("form.emailError");
       return;
     }
-    if(!email.includes('@gmail.com')){
-      toast("Por Favor Subscribirse con Gmail")
+    if (!value.endsWith("@gmail.com")) {
+      setStatus("form.gmail");
       return;
     }
-
+    setBusy(true);
+    setStatus("");
     try {
-      const db = getFirestore(app);
-      // Check if the email already exists in the "subscribers" collection
-      const q = query(collection(db, "subscribers"), where("email", "==", email));
-      const querySnapshot = await getDocs(q);
-
-      if (!querySnapshot.empty) {
-        // If email exists, inform the user
-        toast("Correo ya existente")
-      } else {
-        // If email doesn't exist, add the new subscriber
-        await addDoc(collection(db, "subscribers"), { email });
-        toast("Subscrito Exitosamente!")
+      const [{ db }, { collection, addDoc, query, where, getDocs }] =
+        await Promise.all([
+          import("../../firebase"),
+          import("firebase/firestore"),
+        ]);
+      const result = await getDocs(
+        query(collection(db, "subscribers"), where("email", "==", value)),
+      );
+      if (!result.empty) setStatus("form.duplicate");
+      else {
+        await addDoc(collection(db, "subscribers"), { email: value });
+        setStatus("form.subscribed");
       }
-
-      setEmail(""); // Clear input field after action
-    } catch (error) {
-      console.error("Error subscribing:", error);
-      toast("Subscripcion Fallida. Intente De Nuevo.")
+      setEmail("");
+    } catch {
+      setStatus("common.error");
+    } finally {
+      setBusy(false);
     }
   };
-
   return (
-    <div className="flex flex-col gap-2 items-center p-4 rounded-lg md:w-[60%] xs:w-[95%] border-white border-solid border-2 mt-5">
-      <Toaster />
-      <h2 className="text-xl font-bold text-center text-white md:text-[35px] xs:text-[26px] ">Subscribete Para Recibir Informacion de Nuestros Proximos Eventos!</h2>
-      <Input
-        type="email"
-        placeholder="Ingrese Correo Electronico"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        className="mt-2 p-2 border-solid rounded-lg md:w-[60%] border-white text-white h-[40px]"
-      />
-      <Button onClick={handleSubscribe} className={"text-[22px] md:w-[60%] xs:w-full text-white font-bold h-[50px] rounded-xl border-2 border-solid border-white cursor-pointer transition-transform hover:scale-105 hover:opacity-40 shadow-2xl mt-2"}>
-        Subscribirse
-      </Button>
-    </div>
+    <section className="newsletter-section section">
+      <div className="container newsletter-grid">
+        <div>
+          <p className="eyebrow">
+            <Mail size={16} aria-hidden="true" />
+            {t("form.newsletterEyebrow")}
+          </p>
+          <h2>{t("form.newsletter")}</h2>
+          <p>{t("form.newsletterIntro")}</p>
+        </div>
+        <form noValidate onSubmit={handleSubscribe} aria-busy={busy}>
+          <label htmlFor="newsletter-email">{t("form.email")}</label>
+          <div className="subscribe-row">
+            <input
+              id="newsletter-email"
+              name="email"
+              autoComplete="email"
+              type="email"
+              required
+              placeholder={t("form.emailPlaceholder")}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              aria-describedby="newsletter-note newsletter-status"
+              aria-invalid={
+                status === "form.emailError" || status === "form.gmail"
+              }
+            />
+            <button className="button" disabled={busy} type="submit">
+              {t(busy ? "form.subscribing" : "form.subscribe")}
+              <ArrowUpRight size={18} aria-hidden="true" />
+            </button>
+          </div>
+          <p id="newsletter-note" className="small-copy">
+            {t("form.note")}
+          </p>
+          <p
+            id="newsletter-status"
+            className={`form-status ${status === "form.subscribed" ? "success" : ""}`}
+            role="status"
+          >
+            {status && t(status)}
+          </p>
+        </form>
+      </div>
+    </section>
   );
 }
-
-export default Newsletter;

@@ -1,177 +1,247 @@
-// import { DatePickerDemo } from "@/components/DatePickerDemo"
-import { MdOutlineSwipe } from "react-icons/md";
-import { Input } from "@/components/ui/input"
-import { useState } from "react";
-import LoginForm from "./LoginForm";
-import { Button } from "@/components/ui/button";
+import { useEffect, useRef, useState } from "react";
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog"
-import { getStorage, ref, uploadBytes } from "firebase/storage";
-import { app } from "/firebase";
+} from "@/components/ui/dialog";
+import { PageIntro } from "../components/SiteUI";
+import { useLanguage } from "../i18n/context";
+import LoginForm from "./LoginForm";
 import EventFetcher from "./EventFetcher";
 import Newsletter from "./Newsletter";
-import { sendEventEmailToSubscribers } from "./EmailsFetcher/FetchEmails";
-import PageWrapper from "./PageWrapper";
 
-function Events() {
+export default function Events() {
+  const manageButton = useRef(null);
+  const restoreManageFocus = (event) => {
+    event.preventDefault();
+    manageButton.current?.focus();
+  };
+  const { t, formatDate } = useLanguage();
   const [isAdmin, setIsAdmin] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
+  const [open, setOpen] = useState(false);
   const [image, setImage] = useState(null);
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [refresh, setRefresh] = useState(false)
-
-  const handleLoginSuccess = (user) => {
-    setIsAdmin(true); //will allow user to add/delete img's
-    setShowLogin(false); // Hide login form
-  };
-
-  const handleImageChange = (event) => {
-    const file = event.target.files[0]; // Get the selected file
-    if (file) {
-      setImage(file);
+  const [preview, setPreview] = useState("");
+  const [date, setDate] = useState("");
+  const [refresh, setRefresh] = useState(0);
+  const [busy, setBusy] = useState(false);
+  const [status, setStatus] = useState("");
+  const [formError, setFormError] = useState("");
+  useEffect(() => {
+    if (!image) {
+      setPreview("");
+      return;
     }
-  };
-
-const handleSubmitEvent = async (e) => {
-  e.preventDefault();
-
-  if (!image) {
-    console.error("No image selected.");
-    return;
-  }
-
-  console.log("Uploading File...");
-
-  const storage = getStorage(app);
-  const fileImageRef = ref(storage, `images/${image.name}`);
-
-  await uploadBytes(fileImageRef, image);
-  console.log("Uploaded an image!");
-
-  setImage(null);
-  document.getElementById("picture").value = "";
-
-  // Get input values
-  const eventDetails = {
-    name: document.getElementById("eventName").value.trim(),
-    location: document.getElementById('eventLocation').value.trim(),
-    date: document.getElementById("eventDate").value.trim(),
-    description: document.getElementById("eventDescription").value.trim(),
-  };
-
-  console.log("Event Details:", eventDetails);
-
-  // Ensure valid data before sending the email
-  if (eventDetails.name && eventDetails.date && eventDetails.description) {
+    const url = URL.createObjectURL(image);
+    setPreview(url);
+    return () => URL.revokeObjectURL(url);
+  }, [image]);
+  const publish = async (e) => {
+    e.preventDefault();
+    if (busy) return;
+    const form = e.currentTarget;
+    if (
+      !image ||
+      !image.type.startsWith("image/") ||
+      image.size > 10 * 1024 * 1024
+    ) {
+      setFormError("events.imageError");
+      return;
+    }
+    if (!form.checkValidity()) {
+      setFormError("form.required");
+      return;
+    }
+    const fields = new FormData(form);
+    const details = {
+      name: fields.get("name").trim(),
+      location: fields.get("location").trim(),
+      date: fields.get("date"),
+      description: fields.get("description").trim(),
+    };
+    if (!details.name || !details.location || !details.description) {
+      setFormError("form.required");
+      return;
+    }
+    setBusy(true);
+    setFormError("");
     try {
-      await sendEventEmailToSubscribers(eventDetails);
-      console.log("Email sending triggered.");
-    } catch (error) {
-      console.error("Error sending email:", error);
+      const [{ storageRP }, { ref, uploadBytes }] = await Promise.all([
+        import("../../firebase"),
+        import("firebase/storage"),
+      ]);
+      await uploadBytes(ref(storageRP, `images/${image.name}`), image);
+      setRefresh((value) => value + 1);
+      setImage(null);
+      setDate("");
+      setOpen(false);
+      try {
+        const { sendEventEmailToSubscribers } =
+          await import("./EmailsFetcher/FetchEmails");
+        await sendEventEmailToSubscribers(details);
+        setStatus("events.success");
+      } catch {
+        setStatus("events.notificationError");
+      }
+    } catch {
+      setFormError("common.error");
+    } finally {
+      setBusy(false);
     }
-  } else {
-    console.error("Missing event details. Email not sent.");
-  }
-
-  // Close dialog after submitting
-  setIsDialogOpen(false);
-};
-
+  };
+  const logout = async () => {
+    try {
+      const [{ authRP }, { signOut }] = await Promise.all([
+        import("../../firebase"),
+        import("firebase/auth"),
+      ]);
+      await signOut(authRP);
+      setIsAdmin(false);
+    } catch {
+      setStatus("common.error");
+    }
+  };
   return (
-    <PageWrapper>
-    <div>
-        <div className="bg-[linear-gradient(120deg,_#c79af0_0%,_#6aa8f0_100%)] flex flex-col items-center justify-center w-full p-5 lg:h-[900px] relative">
-            <div className="relative w-full flex items-center justify-center">
-            <img src="/test4.jpg" alt="roca5" className="w-[1300px] md:rounded-[50px] sm:rounded-[30px] xs:rounded-[20px] brightness-70 relative md:top-[150px] sm:top-[100px] xs:top-[60px] object-cover" data-aos="fade-up" />
-            <div className="absolute text-white lg:bottom-[610px] md:bottom-[260px] sm:bottom-[240px] xs:bottom-[130px] text-center" data-aos="fade-down">
-                <h1 className="font-semibold lg:text-[100px] md:text-[70px] sm:text-[50px] xs:text-[35px]" data-aos="fade-down">Proximos Eventos</h1>
-                <p className="lg:text-[36px] md:text-[25px] sm:text-[20px] font-semibold border-solid border-2">No Te Los Puedes Perder!</p>
-            </div>
-            </div>
-        </div>
-        <div className="md:mt-[200px] sm:mt-[120px] xs:mt-[100px] lg:text-xl md:text-[18px] lg:w-full xs:w-[90%] m-auto text-center font-semibold animate" >
-          <div className=" flex flex-col items-center">
-            <h1 className="md:text-[40px] xs:text-[30px] font-bold">Echa Un Vistazo</h1>
-            <p className="text-[40px] flex flex-col items-center"><MdOutlineSwipe /><span className="text-[15px]">Deslizar</span></p>
-            <div>
-              {/* This component helps to fetch all img's from firebase and if user is
-                  admin, then it will show the delete button for the events */}
-              <EventFetcher refresh={refresh} isAdmin={isAdmin} />
-            </div>
-
-            <Button onClick={() => {
-              if(isAdmin){
-                  setIsDialogOpen(true)
-                }else{
-                  setShowLogin(true)
-                }
-              }}
-              className={"md:text-[18px] xs:text-[15px] font-bold h-[50px] rounded-[100px] border-2 border-solid border-black cursor-pointer transition-transform hover:scale-105 hover:opacity-40 shadow-2xl"} >Agregar/Eliminar Evento</Button>
-
-            {/* Functions to show login information, but can only be used by admins */}
-            {showLogin && !isAdmin && (
-                          <LoginForm
-                            showLogin={showLogin}
-                            setShowLogin={setShowLogin}
-                            onSuccess={handleLoginSuccess}
-                            onError={() => alert("Login failed!")}
-                          />
-                        )}
-              
-              {/* Functions to open dialog and add img's once the user is logged in */}
-              <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-                  <DialogContent className="p-6 bg-white max-h-screen overflow-y-auto">
-                    <DialogHeader>
-                      <DialogTitle>Agregar Evento</DialogTitle>
-                      <DialogDescription>
-                        <form onSubmit={handleSubmitEvent} className="flex flex-col space-y-4">
-                          <label htmlFor="picture">Seleccione Imagen</label>
-                          <Input
-                            id="picture"
-                            type="file"
-                            accept="image/*"
-                            onChange={handleImageChange}
-                          />
-                          {image && (
-                            <section>
-                              <img src={URL.createObjectURL(image)} alt="Preview" className="w-[400px] mt-4 border-solid" />
-                              <ul>
-                                <li>Name: {image.name}</li>
-                                <li>Type: {image.type}</li>
-                                <li>Size: {image.size} bytes</li>
-                              </ul>
-                            </section>
-                            )}
-                            <label htmlFor="eventName">Nombre del Evento</label>
-                            <Input id="eventName" type="text" placeholder="Ej. Reunión Juvenil" className={'border-solid'} required />
-
-                            <label htmlFor="eventName">Localizacion</label>
-                            <Input id="eventLocation" type="text" placeholder="eg. Juarez" className={'border-solid'} required />
-
-                            <label htmlFor="eventDate">Fecha del Evento</label>
-                            <Input id="eventDate" type="date" className={'border-solid'} required />
-
-                            <label htmlFor="eventDescription">Descripción</label>
-                            <textarea id="eventDescription" placeholder="Detalles sobre el evento..." className={'border-solid'} required></textarea>
-                          <Button type="submit" className="mt-4 bg-gray-500 text-white font-bold">Publicar</Button>
-                        </form>
-                      </DialogDescription>
-                    </DialogHeader>
-                  </DialogContent>
-                </Dialog>
+    <>
+      <PageIntro
+        eyebrow={t("events.eyebrow")}
+        title={t("events.title")}
+        description={t("events.intro")}
+        image="/test4.jpg"
+        alt="Roca y Potencia"
+      />
+      <section className="container section">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">{t("common.events")}</p>
+            <h2>{t("events.heading")}</h2>
           </div>
+          <p>{t("events.description")}</p>
         </div>
-        <div className="flex justify-center items-center mt-10 pt-15 pb-15 bg-[linear-gradient(120deg,_#c79af0_0%,_#6aa8f0_100%)] rounded-t-2xl" data-aos="zoom-in-down">
-          <Newsletter />
+        <EventFetcher refresh={refresh} isAdmin={isAdmin} />
+        <div className="admin-actions">
+          <button
+            ref={manageButton}
+            className="text-link"
+            onClick={() => (isAdmin ? setOpen(true) : setShowLogin(true))}
+          >
+            {t("events.manage")} ↗
+          </button>
+          {isAdmin && (
+            <button className="text-link" onClick={logout}>
+              {t("events.logout")}
+            </button>
+          )}
         </div>
-    </div>
-    </PageWrapper>
-  )
+        <p className="form-status" role="status">
+          {status && t(status)}
+        </p>
+      </section>
+      <Newsletter />
+      <LoginForm
+        onCloseAutoFocus={restoreManageFocus}
+        showLogin={showLogin}
+        setShowLogin={setShowLogin}
+        onSuccess={() => {
+          setIsAdmin(true);
+          setShowLogin(false);
+        }}
+      />
+      <Dialog
+        open={open}
+        onOpenChange={(value) => {
+          if (!busy) setOpen(value);
+        }}
+      >
+        <DialogContent
+          className="site-dialog"
+          onCloseAutoFocus={restoreManageFocus}
+        >
+          <DialogHeader>
+            <DialogTitle>{t("events.add")}</DialogTitle>
+            <DialogDescription>
+              {t("events.adminDescription")}
+            </DialogDescription>
+          </DialogHeader>
+          <form
+            className="stack-form"
+            noValidate
+            onSubmit={publish}
+            aria-busy={busy}
+          >
+            <label htmlFor="event-image">{t("events.image")}</label>
+            <input
+              id="event-image"
+              type="file"
+              accept="image/*"
+              required
+              onChange={(e) => {
+                setImage(e.target.files?.[0] || null);
+                setFormError("");
+              }}
+            />
+            {preview && (
+              <img
+                className="upload-preview"
+                src={preview}
+                alt={t("events.preview")}
+              />
+            )}
+            {[
+              ["name", "events.name", "text", "events.namePlaceholder"],
+              [
+                "location",
+                "events.location",
+                "text",
+                "events.locationPlaceholder",
+              ],
+            ].map(([name, label, type, placeholder]) => (
+              <div className="field" key={name}>
+                <label htmlFor={`event-${name}`}>{t(label)}</label>
+                <input
+                  id={`event-${name}`}
+                  name={name}
+                  type={type}
+                  placeholder={t(placeholder)}
+                  required
+                />
+              </div>
+            ))}
+            <label htmlFor="event-date">{t("events.date")}</label>
+            <input
+              id="event-date"
+              name="date"
+              type="date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+              required
+            />
+            {date && (
+              <p className="small-copy">
+                {t("events.selectedDate", { date: formatDate(date) })}
+              </p>
+            )}
+            <label htmlFor="event-description">
+              {t("events.descriptionLabel")}
+            </label>
+            <textarea
+              id="event-description"
+              name="description"
+              placeholder={t("events.descriptionPlaceholder")}
+              required
+              rows={4}
+            />
+            <p className="form-status" role="alert">
+              {formError && t(formError)}
+            </p>
+            <button type="submit" className="button" disabled={busy}>
+              {t(busy ? "events.publishing" : "events.publish")}
+            </button>
+          </form>
+        </DialogContent>
+      </Dialog>
+    </>
+  );
 }
-
-export default Events

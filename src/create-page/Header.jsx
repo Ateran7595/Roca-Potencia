@@ -1,118 +1,86 @@
-import { Button } from '@/components/ui/button';
-import { useLocation } from 'react-router-dom';
-import { IoMenu } from "react-icons/io5";
+import { useState } from "react";
+import { NavLink, Link } from "react-router-dom";
+import { Menu, X, ArrowUpRight } from "lucide-react";
+import { useLanguage } from "../i18n/context";
 
-import {
-  Sheet,
-  SheetContent,
-  SheetClose,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet"
-import { useMediaQuery } from 'react-responsive';
-import PageWrapper from './PageWrapper';
-
-function Header() {
-  const isSmallScreen = useMediaQuery({ maxWidth: 1024 });
-  const location = useLocation(); // Get the current page URL
-  const isLandingPage = location.pathname === '/'; // Check if we are on the landing page
-  const isServicePageEP = location.pathname === '/serviceep';
-  const isServicePageJZ = location.pathname === '/servicejz';
-  const isAboutPage = location.pathname === '/acerca';
-  const isEventPage = location.pathname === '/eventos';
-  const isWelcomePage = location.pathname === '/bienvenida';
-
-  const headerBackground = isLandingPage
-  ? 'bg-[linear-gradient(-20deg,#616161_0%,#9bc5c3_100%)]'
-  : isServicePageEP
-  ? 'bg-[linear-gradient(-225deg,#CBBACC_0%,#2580B3_100%)]'
-  : isServicePageJZ
-  ? "bg-[linear-gradient(-20deg,_#fc6076_0%,_#ff9a44_100%)]"
-  : isAboutPage
-  ? "bg-[linear-gradient(120deg,_#5ee6a8_0%,_#66b8e4_100%)]"
-  : isEventPage
-  ? 'bg-[linear-gradient(120deg,_#c79af0_0%,_#6aa8f0_100%)]'
-  : isWelcomePage
-  ? "bg-[linear-gradient(to_top,#a3bded_0%,#6991c7_100%)]"
-  : 'bg-gray-800'
-  
-
+export default function Header() {
+  const { t, language, setLanguage } = useLanguage();
+  const [open, setOpen] = useState(false);
   return (
-    <PageWrapper>
-    <div className={`flex lg:flex-row xs:flex-col xs:gap-4 xs:flex-wrap justify-between items-center ${headerBackground} p-6`}>
-      <a href="/">
-        <div className='flex items-center gap-2 transition-transform hover:scale-105 cursor-pointer' data-aos="fade-zoom-in">
-          <img src="/RPlogo.png" alt="logo" className='sm:w-[90px] sm:h-[90px] xs:w-[65px] xs:h-[65px]' />
-          <p className='font-bold sm:text-[35px] xs:text-[30px] text-white'>Roca & Potencia</p>
+    <header className="site-header">
+      <div className="header-inner container">
+        <Link to="/" className="brand" onClick={() => setOpen(false)}>
+          <img src="/RPlogo.png" alt="" width="46" height="46" />
+          <span>
+            Roca y Potencia
+            <span className="brand-sub">EL PASO · CIUDAD JUÁREZ</span>
+          </span>
+        </Link>
+        <nav
+          id="main-navigation"
+          className={`main-nav ${open ? "is-open" : ""}`}
+          aria-label={t("nav.main")}
+          onKeyDown={(e) => {
+            if (e.key === "Escape") {
+              setOpen(false);
+              document.getElementById("menu-toggle").focus();
+            }
+          }}
+        >
+          <NavLink to="/" end onClick={() => setOpen(false)}>
+            {t("nav.home")}
+          </NavLink>
+          <NavLink to="/acerca" onClick={() => setOpen(false)}>
+            {t("nav.about")}
+          </NavLink>
+          <NavLink to="/eventos" onClick={() => setOpen(false)}>
+            {t("nav.events")}
+          </NavLink>
+          <Link to="/#service" onClick={() => setOpen(false)}>
+            {t("nav.services")}
+          </Link>
+          <Link
+            to="/bienvenida"
+            className="mobile-visit"
+            onClick={() => setOpen(false)}
+          >
+            {t("nav.visit")} <ArrowUpRight size={16} />
+          </Link>
+        </nav>
+        <div className="header-actions">
+          <div
+            className="language-switch"
+            role="group"
+            aria-label={t("nav.language")}
+          >
+            {["es", "en"].map((lang) => (
+              <button
+                key={lang}
+                lang={lang}
+                aria-label={lang === "es" ? "Español" : "English"}
+                aria-pressed={language === lang}
+                onClick={() => setLanguage(lang)}
+              >
+                {lang.toUpperCase()}
+              </button>
+            ))}
+          </div>
+          <Link to="/bienvenida" className="button header-visit">
+            {t("nav.visit")}
+            <ArrowUpRight size={16} />
+          </Link>
+          <button
+            id="menu-toggle"
+            className="icon-button menu-toggle"
+            aria-controls="main-navigation"
+            aria-expanded={open}
+            aria-label={t(open ? "nav.close" : "nav.menu")}
+            onClick={() => setOpen(!open)}
+          >
+            {open ? <X /> : <Menu />}
+          </button>
         </div>
-      </a>
-      <div className='flex xs:flex-wrap justify-center gap-5' data-aos="fade-zoom-in">
-      {isSmallScreen ? (
-        <Sheet>
-          <SheetTrigger>
-              <Button className="flex justify-center items-center text-white shadow-2xl text-[22px] font-bold sm:w-[150px] sm:h-[50px] xs:w-[137px] xs:h-[37px] rounded-[100px] border-2 border-solid border-white cursor-pointer transition-transform hover:scale-105 hover:opacity-70">
-                <IoMenu />Menu
-              </Button>
-          </SheetTrigger>
-          <SheetContent  side="right"
-  className={`
-    ${headerBackground}
-    flex flex-col items-center gap-8
-    transform transition-all duration-700 ease-in-out
-    data-[state=open]:translate-x-0 data-[state=open]:opacity-100
-    data-[state=closed]:translate-x-full data-[state=closed]:opacity-0
-  `} >
-            <SheetHeader >
-              <SheetTitle className='text-center text-[30px] text-white'>Menu</SheetTitle>
-            </SheetHeader>
-            {isLandingPage && (
-              <a href="#service">
-                <SheetClose>
-                  <Button className="text-white shadow-2xl text-[22px] font-bold sm:w-[150px] sm:h-[50px] xs:w-[137px] xs:h-[37px] rounded-[100px] border-2 border-solid border-white cursor-pointer transition-transform hover:scale-105 hover:opacity-70">
-                    Servicios
-                  </Button>
-                </SheetClose> 
-              </a>
-            )}
-            <a href="/eventos">
-              <Button className="text-white shadow-2xl text-[22px] font-bold sm:w-[150px] sm:h-[50px] xs:w-[137px] xs:h-[37px] rounded-[100px] border-2 border-solid border-white cursor-pointer transition-transform hover:scale-105 hover:opacity-70">
-                Eventos
-              </Button>
-            </a>
-            <a href="/acerca">
-              <Button className="text-white shadow-2xl text-[22px] font-bold sm:w-[150px] sm:h-[50px] xs:w-[137px] xs:h-[37px] rounded-[100px] border-2 border-solid border-white cursor-pointer transition-transform hover:scale-105 hover:opacity-70">
-                Acerca
-              </Button>
-            </a>
-          </SheetContent>
-        </Sheet>
-      ) : 
-      (
-        <>
-          {isLandingPage && (
-            <a href="#service">
-              <Button className="text-white shadow-2xl text-[22px] font-bold sm:w-[150px] sm:h-[50px] xs:w-[137px] xs:h-[37px] rounded-[100px] border-2 border-solid border-white cursor-pointer transition-transform hover:scale-105 hover:opacity-70">
-                Servicios
-              </Button>
-            </a>
-          )}
-          <a href="/eventos">
-            <Button className="text-white shadow-2xl text-[22px] font-bold sm:w-[150px] sm:h-[50px] xs:w-[137px] xs:h-[37px] rounded-[100px] border-2 border-solid border-white cursor-pointer transition-transform hover:scale-105 hover:opacity-70">
-              Eventos
-            </Button>
-          </a>
-          <a href="/acerca">
-            <Button className="text-white shadow-2xl text-[22px] font-bold sm:w-[150px] sm:h-[50px] xs:w-[137px] xs:h-[37px] rounded-[100px] border-2 border-solid border-white cursor-pointer transition-transform hover:scale-105 hover:opacity-70">
-              Acerca
-            </Button>
-          </a>
-        </>
-      )}
       </div>
-    </div>
-    </PageWrapper>
+    </header>
   );
 }
-
-export default Header;
